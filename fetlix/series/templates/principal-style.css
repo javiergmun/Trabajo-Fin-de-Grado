@@ -1,0 +1,44 @@
+.cabecera{
+    background: rgb(228, 96, 96);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.login{
+    background-color: rgb(252, 92, 0);
+    right: 10;
+    border-radius: 12px;
+    width: 100px;
+    height: 50px;
+}
+.buscador{
+    margin-right: 500px;
+    margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+}
+.logo{
+    width:100px ;
+    height:50px;
+    margin-left: 10px;
+}
+.menu{
+    background-color: rgb(252, 92, 0);
+    width: 100px;
+    height: 50px;
+}
+.datos_cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    margin-right: 2rem;
+}
+
+body{
+    background-image: url(https://fondosmil.com/fondo/32022.jpg);
+    font-family: arial;
+}
