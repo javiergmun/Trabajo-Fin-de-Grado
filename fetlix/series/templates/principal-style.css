@@ -38,6 +38,15 @@
     margin-right: 2rem;
 }
 
+.btn-menu{
+    float: left;
+    line-height: 70px;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
 body{
     background-image: url(https://fondosmil.com/fondo/32022.jpg);
     font-family: arial;
