@@ -5,10 +5,15 @@ from django.shortcuts import render
 from django.views import View
 
 
-#class HelloWorld(View):
-    #def get(self, request):
-        #return HttpResponse(content=b'Hello World')
+# class HelloWorld(View):
+# def get(self, request):
+# return HttpResponse(content=b'Hello World')
 
-class HelloWorld(View):
+class Inicio(View):
     def get(self, request):
         return render(request, 'index.html')
+
+
+class Perfil(View):
+    def get(self, request):
+        return render(request, 'perfil.html')
