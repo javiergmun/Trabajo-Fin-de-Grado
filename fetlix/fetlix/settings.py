@@ -121,6 +121,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = ''
 
+STATICFILES_DIRS = (
+    'static',
+)
+
+
+
 LOGGING = {
     'version': 1,
     'handlers': {
