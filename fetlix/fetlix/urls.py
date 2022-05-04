@@ -20,9 +20,21 @@ from django.urls import path
 
 from series.views import Inicio
 from series.views import Perfil
+from series.views import Comida
+from series.views import Moda
+from series.views import Hogar
+from series.views import Informatica
+from series.views import Servicios
+from series.views import Vehiculos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',Inicio.as_view()),
-    path('perfil.html/',Perfil.as_view())
+    path('perfil.html/',Perfil.as_view()),
+    path('categoria-comida.html/',Comida.as_view()),
+    path('categoria-moda.html/',Moda.as_view()),
+    path('categoria-hogar.html/',Hogar.as_view()),
+    path('categoria-informatica.html/',Informatica.as_view()),
+    path('categoria-servicios.html/',Servicios.as_view()),
+    path('categoria-vehiculos.html/',Vehiculos.as_view())
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
