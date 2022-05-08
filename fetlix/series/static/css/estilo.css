@@ -132,3 +132,43 @@
 		margin-right: auto;
 		padding: 5%;
 	}
+	.producto{
+	    background-color: #A0EAE9;
+	    width: 50%;
+	    height: 40%;
+		margin-top: 6rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3%;
+	}
+	foto-producto{
+	    width: 150px;
+	    height: 100px;
+	    float: left;
+
+	}
+	.datos{
+		float: right;
+		margin-right: 120px;
+		text-color: black
+	}
+	.comentarios{
+	    background-color: white;
+	    height: 5em;
+        line-height: 1em;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 100%;
+        border: 1px solid;
+	}
+	.comentario{
+
+	    margin-top: 10px;
+	    margin-left: 10px;
+		margin-right: 10px;
+	}
+	boton-comentar{
+	    border-radius: 5px;
+	    float: right;
+
+	}
