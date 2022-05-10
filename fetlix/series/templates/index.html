@@ -13,6 +13,7 @@
                 background-repeat: no-repeat;
                 background-size: 100vw 100vh;
                 background-attachment: fixed;">
+     <script src="{% static 'js/principal.js' %}" type="module"></script>
         <header class="header">
             <div class="container">
             <div class="btn-menu">
@@ -21,10 +22,17 @@
                 <div class="logo">
                     <h1>Opiniones</h1>
                 </div>
-                <nav class="menu">
-                    <a href="perfil.html">Perfil</a>
-                    <a href="#">Login</a>
-                </nav>
+                <div class="busca">
+                    <form>
+                        <input type="search" placeholder="Buscar..." class="buscador"/><button class="btn-buscar"><span class="fas fa-search"></span></button>
+                    </form>
+                </div>
+                <div>
+                    <nav class="menu">
+                        <a href="perfil.html">Perfil</a>
+                        <a href="#">Login</a>
+                    </nav>
+                </div>
             </div>
         </header>
 
@@ -47,8 +55,8 @@
     </div>
      <div class="producto">
          <img class="foto-producto" src="https://definicion.de/wp-content/uploads/2009/06/producto.png" width="150">
-         <div class="datos">
-             <span class="fas fa-box "></span> Nombre</br></br></br>
+         <div class="datos" id="datos">
+             <span class="fas fa-box "></span> <i id="nombrecito">Nombre</i></br></br></br>
              <span class="fas fa-user"></span> Empresa</br></br></br>
              <span class="fas fa-money-bill"></span> Precio€</br></br></br>
              <span class="fas fa-heart "></span> NºMG</br></br></br>
