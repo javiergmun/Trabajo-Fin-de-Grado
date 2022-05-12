@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.template.defaulttags import url
+from django.urls import path, include
 
 from series.views import Inicio
 from series.views import Perfil
@@ -29,6 +30,7 @@ from series.views import Vehiculos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #url(r'^productos/', include('series.urls')),
     path('',Inicio.as_view()),
     path('perfil.html/',Perfil.as_view()),
     path('categoria-comida.html/',Comida.as_view()),
@@ -36,5 +38,6 @@ urlpatterns = [
     path('categoria-hogar.html/',Hogar.as_view()),
     path('categoria-informatica.html/',Informatica.as_view()),
     path('categoria-servicios.html/',Servicios.as_view()),
-    path('categoria-vehiculos.html/',Vehiculos.as_view())
+    path('categoria-vehiculos.html/',Vehiculos.as_view()),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
