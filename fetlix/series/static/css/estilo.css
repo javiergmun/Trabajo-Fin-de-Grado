@@ -193,7 +193,15 @@
 	    margin-left: 10px;
 		margin-right: 10px;
 	}
-	boton-comentar{
+	.boton-comentar{
+	    margin-top: 5px;
 	    border-radius: 5px;
-	    float: right;
+	    float: left;
+	    border: none;
+	    cursor: pointer;
+	    padding: 3px;
 	}
+	.boton-comentar:active {
+            transform: scale(0.98);
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    }
