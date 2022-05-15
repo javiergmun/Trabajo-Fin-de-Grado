@@ -11,34 +11,64 @@ fetch(`${API_URL}/users`)
 
             //---------
             let imagen = document.createElement('img')
-            /*imagen.appendChild(
-                document.createAttribute('src').value(`${user.imagen}`)
-            )*/
+            let foto = document.createAttribute('src')
+            foto.value='https://definicion.de/wp-content/uploads/2009/06/producto.png'
+            imagen.setAttributeNode(foto)
 
+            //let salto= document.createElement('br')
+            
             //---------
             let nombre = document.createElement('p')
+            let nombreIcono = document.createElement('span')
+            nombreIcono.className='fas fa-box '
+            nombre.appendChild(nombreIcono)
             nombre.appendChild(
-                document.createTextNode(`${user.name}`)
+                document.createTextNode(" "+`${user.name}`)
+            );
+            
+            let empresa = document.createElement('p')
+            let empresaIcono = document.createElement('span')
+            empresaIcono.className='fas fa-user'
+            empresa.appendChild(empresaIcono)
+            empresa.appendChild(
+                document.createTextNode(" "+`${user.username}`)
             );
 
-            let empresa = document.createElement('p')
-            empresa.appendChild(
-                document.createTextNode(`${user.username}`)
-            );
 
             let precio = document.createElement('p')
+            let precioIcono = document.createElement('span')
+            precioIcono.className='fas fa-money-bill'
+            precio.appendChild(precioIcono)
             precio.appendChild(
-                document.createTextNode(`${user.email}`)
+                document.createTextNode(" "+`${user.email}`)
             );
 
-            let mg = document.createElement('p')
-            mg.appendChild(
-                document.createTextNode(`${user.phone}`)
-            );
 
+            let mg = document.createElement('i')
+            let idMg = document.createAttribute('id')
+            idMg.value='meGusta'
+            mg.setAttributeNode(idMg)
+            mg.append(1)
+
+
+            let mgIcono = document.createElement('span')
+            let funcionMg = document.createAttribute('onclick')
+            let idIconoMg = document.createAttribute('id')
+            idIconoMg.value='iconoMeGusta'
+            funcionMg.value='doLike()'
+            mgIcono.setAttributeNode(funcionMg)
+            mgIcono.setAttributeNode(idIconoMg)
+            mgIcono.className='fas fa-heart '
+    
             //---------
 
             let textComentarios = document.createElement('p')
+            let comentariosIcono = document.createElement('span')
+            comentariosIcono.className='fas fa-comment'
+            textComentarios.appendChild(comentariosIcono)
+            textComentarios.appendChild(
+                document.createTextNode(" ")
+            )
             textComentarios.appendChild(
                 document.createTextNode("Comentarios: ")
             );
@@ -81,9 +111,11 @@ fetch(`${API_URL}/users`)
             });
             //---------
 
+            //dato.appendChild(nombreIcono)
             dato.appendChild(nombre)
             dato.appendChild(empresa)
             dato.appendChild(precio)
+            dato.appendChild(mgIcono)
             dato.appendChild(mg)
             
 
@@ -110,3 +142,10 @@ fetch(`${API_URL}/users`)
             
     });
 })
+
+function doLike(){
+    var demo = document.getElementById("meGusta");
+    var demoValue = parseInt(demo.innerHTML);
+    var puntos = demoValue + 1;
+    demo.innerHTML = puntos;
+}

@@ -169,7 +169,7 @@
 		margin-right: auto;
 		padding: 3%;
 	}
-	foto-producto{
+	.foto-producto{
 	    width: 150px;
 	    height: 100px;
 	    float: left;
@@ -178,6 +178,9 @@
 		float: right;
 		margin-right: 50px;
 		text-color: black
+	}
+	#iconoMeGusta:active{
+	    color: red;
 	}
 	.comentarios{
 	    background-color: white;
