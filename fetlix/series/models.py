@@ -13,6 +13,8 @@ class Cliente(models.Model):
     imagen = models.ImageField(verbose_name='Imagen', upload_to='imagenes_cliente/', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
+    def __str__(self):
+        return str(self.nombre) + ' - ' + str(self.email) + ' - ' + str(self.fecha_creacion)
 
 class Empresa(models.Model):
     id = models.AutoField(primary_key=True)
@@ -23,6 +25,8 @@ class Empresa(models.Model):
     imagen = models.ImageField(verbose_name='Imagen', upload_to='imagenes_empresa/', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
+    def __str__(self):
+        return str(self.nombre) + ' - ' + str(self.email) + ' - ' + str(self.fecha_creacion)
 
 class Producto(models.Model):
 
@@ -62,7 +66,7 @@ class Producto(models.Model):
         ordering = ['categoria']
 
     def __str__(self):
-        return str(self.nombre) + ' - ' + str(self.descripcion) + ' - ' + str(self.empresa)
+        return str(self.nombre) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.empresa)
 
     @property #decorador dice que no recibe parametros externos, se trata como un campo que no se guarda en la bbdd
     def is_famous(self):
@@ -102,4 +106,4 @@ class Post_Cliente(models.Model):
 
 
     def __str__(self):
-        return str(self.titulo) + ' - ' + str(self.descripcion) + str(self.cliente)
+        return str(self.titulo) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.cliente)
