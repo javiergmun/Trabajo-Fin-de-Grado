@@ -1,6 +1,6 @@
-const API_URL ="https://jsonplaceholder.typicode.com";
+const API_URL ="http://127.0.0.1:8000";
 
-fetch(`${API_URL}/users`)
+fetch(`${API_URL}/productos/list`)
     .then((response)=>response.json())
     .then((response)=>{
         response.forEach((user)=>{
@@ -12,7 +12,7 @@ fetch(`${API_URL}/users`)
             //---------
             let imagen = document.createElement('img')
             let foto = document.createAttribute('src')
-            foto.value='https://definicion.de/wp-content/uploads/2009/06/producto.png'
+            foto.value=`${user.empresa}`
             imagen.setAttributeNode(foto)
 
             //let salto= document.createElement('br')
@@ -23,7 +23,7 @@ fetch(`${API_URL}/users`)
             nombreIcono.className='fas fa-box '
             nombre.appendChild(nombreIcono)
             nombre.appendChild(
-                document.createTextNode(" "+`${user.name}`)
+                document.createTextNode(" "+`${user.nombre}`)
             );
             
             let empresa = document.createElement('p')
@@ -31,7 +31,7 @@ fetch(`${API_URL}/users`)
             empresaIcono.className='fas fa-user'
             empresa.appendChild(empresaIcono)
             empresa.appendChild(
-                document.createTextNode(" "+`${user.username}`)
+                document.createTextNode(" "+`${user.empresa}`)
             );
 
 
@@ -40,7 +40,7 @@ fetch(`${API_URL}/users`)
             precioIcono.className='fas fa-money-bill'
             precio.appendChild(precioIcono)
             precio.appendChild(
-                document.createTextNode(" "+`${user.email}`)
+                document.createTextNode(" "+`${user.precio}`+" €")
             );
 
 
@@ -48,7 +48,9 @@ fetch(`${API_URL}/users`)
             let idMg = document.createAttribute('id')
             idMg.value='meGusta'
             mg.setAttributeNode(idMg)
-            mg.append(1)
+            mg.appendChild(
+                document.createTextNode(" "+`${user.num_likes}`)
+            );
 
 
             let mgIcono = document.createElement('span')
@@ -83,12 +85,11 @@ fetch(`${API_URL}/users`)
             botonComentar.setAttributeNode(nombreBoton)
 
 
-            fetch(`${API_URL}/users`)
+            fetch(`${API_URL}/productos/list`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{
 
-                    
                     const comentario = document.createElement('div')
 
                     let usuarioPost = document.createElement('p')
@@ -144,8 +145,14 @@ fetch(`${API_URL}/users`)
 })
 
 function doLike(){
+    //$( "#iconoMeGusta" ).css('color', 'red');
     var demo = document.getElementById("meGusta");
     var demoValue = parseInt(demo.innerHTML);
     var puntos = demoValue + 1;
-    demo.innerHTML = puntos;
+    if(demoValue=puntos){
+        demo.innerHTML = puntos;
+    }else{
+        
+    }
+   
 }
