@@ -1,22 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from series.serializers import ProductSerializer
 
 from django.views import View
 from series.models import Producto
 
 
-#def producto_lista(request):
- #   context = {
-  #      'lista_productos': Producto.objects.all()
-   # }
-    #return render(request, 'producto_lista.html', context)
+class ProductList(APIView):
+    #Listar productos o crear productos
+    def get(self, request, format=None):
+        productos= Producto.objects.all()
+        serializer = ProductSerializer(productos, many=True)
+        return Response(serializer.data)
 
 
-#def producto_detalle_vista(request, pk):
- #   context = {
-  #      'pk': pk
-   # }
-    #return render(request, 'producto_detalle_vista.html', context)
+
 
 
 

@@ -30,7 +30,6 @@ from series.views import Vehiculos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #url(r'^productos/', include('series.urls')),
     path('',Inicio.as_view()),
     path('perfil.html/',Perfil.as_view()),
     path('categoria-comida.html/',Comida.as_view()),
@@ -39,5 +38,6 @@ urlpatterns = [
     path('categoria-informatica.html/',Informatica.as_view()),
     path('categoria-servicios.html/',Servicios.as_view()),
     path('categoria-vehiculos.html/',Vehiculos.as_view()),
+    path('productos/', include('series.urls'))
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
