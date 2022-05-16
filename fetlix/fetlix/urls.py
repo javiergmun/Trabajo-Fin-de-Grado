@@ -30,7 +30,7 @@ from series.views import Vehiculos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',Inicio.as_view(), include('series.urls')),
+    path('',Inicio.as_view()),
     path('perfil.html/',Perfil.as_view()),
     path('categoria-comida.html/',Comida.as_view()),
     path('categoria-moda.html/',Moda.as_view()),

@@ -26,7 +26,7 @@ class Empresa(models.Model):
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
     def __str__(self):
-        return str(self.nombre) + ' - ' + str(self.email) + ' - ' + str(self.fecha_creacion)
+        return str(self.nombre)
 
 class Producto(models.Model):
 
