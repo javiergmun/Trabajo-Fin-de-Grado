@@ -1,7 +1,9 @@
+from django.contrib.auth import login
 from django.template.defaulttags import url
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from series import views
+from django.urls import path, include
 
 
 
