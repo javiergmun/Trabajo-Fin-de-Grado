@@ -11,13 +11,17 @@ from series.serializers import ProductSerializer, PostSerializer, ClienteSeriali
 from django.views import View
 from series.models import Producto, Post_Cliente, Cliente, Empresa
 
-
+########################################################
+#                                                      #
+#                ENDPOINTS PRODUCTOS                   #
+#                                                      #
+########################################################
 class ProductList(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all()
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self,request, format=None):
         serializer = ProductSerializer(data=request.data)
@@ -31,50 +35,63 @@ class ProductList_COMIDA(APIView):
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=1)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_HOGAR(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=2)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_INFORMATICA(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=3)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_MODA(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=4)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_SERVICIOS(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=5)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_VEHICULOS(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=6)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_OTROS(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=7)
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class ProductList_ORDER_BY_LIKES(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().order_by('-num_likes')
         serializer = ProductSerializer(productos, many=True)
-        return Response(serializer.data, status=status.HTTP_302_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+########################################################
+#                                                      #
+#                 ENDPOINTS POSTS                      #
+#                                                      #
+########################################################
 class PostList(APIView):
     #Listar posts o crear posts TODOS
     def get(self, request , format=None):
@@ -89,6 +106,11 @@ class PostList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+########################################################
+#                                                      #
+#                ENDPOINTS CLIENTES                    #
+#                                                      #
+########################################################
 class ClienteList(APIView):
     #Listar cliente o crear cliente
     def get(self, request , format=None):
@@ -103,6 +125,11 @@ class ClienteList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+########################################################
+#                                                      #
+#               ENDPOINTS EMPRESA                      #
+#                                                      #
+########################################################
 class EmpresaList(APIView):
     #Listar empresa o crear empresa
     def get(self, request , format=None):
@@ -118,8 +145,11 @@ class EmpresaList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
+########################################################
+#                                                      #
+#              ENDPOINTS VISTAS HTML                   #
+#                                                      #
+########################################################
 class Inicio(View):
     def get(self, request):
         return render(request, 'index.html')
