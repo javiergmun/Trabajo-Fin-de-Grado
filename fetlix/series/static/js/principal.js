@@ -6,13 +6,18 @@ fetch(`${API_URL}/productos/list`)
         response.forEach((user)=>{
 
             const productos = document.createElement('div')
+            const idProductos = document.createAttribute('id')
+            idProductos.value='idProductos'
+            productos.setAttributeNode(idProductos)
+
             const dato = document.createElement('div')
             const comentarios = document.createElement('div')
 
             //---------
             let imagen = document.createElement('img')
             let foto = document.createAttribute('src')
-            foto.value=`${user.empresa}`
+            
+            foto.value=user.imagen
             imagen.setAttributeNode(foto)
 
             //let salto= document.createElement('br')
@@ -69,18 +74,18 @@ fetch(`${API_URL}/productos/list`)
             comentariosIcono.className='fas fa-comment'
             textComentarios.appendChild(comentariosIcono)
             textComentarios.appendChild(
-                document.createTextNode(" ")
-            )
-            textComentarios.appendChild(
-                document.createTextNode("Comentarios: ")
+                document.createTextNode(" Comentarios: ")
             );
             //---------
 
             let botonComentar = document.createElement('input')
             let tipo = document.createAttribute('type')
             let nombreBoton = document.createAttribute('value')
+            let clickComentar= document.createAttribute('onclick')
+            clickComentar.value= 'crearComentario()'
             tipo.value='button',
             nombreBoton.value="Comentar"
+            botonComentar.setAttributeNode(clickComentar)
             botonComentar.setAttributeNode(tipo)
             botonComentar.setAttributeNode(nombreBoton)
 
@@ -149,10 +154,64 @@ function doLike(){
     var demo = document.getElementById("meGusta");
     var demoValue = parseInt(demo.innerHTML);
     var puntos = demoValue + 1;
-    if(demoValue=puntos){
-        demo.innerHTML = puntos;
-    }else{
-        
-    }
+    
+    demo.innerHTML = puntos;
    
+
+}
+
+function crearComentario(){
+
+    let caja = document.createElement('div')
+
+    let formulario = document.createElement('form')
+
+    let textTitulo = document.createElement('p')
+    textTitulo.appendChild(
+        document.createTextNode("Titulo de tu comentario: ")
+    );
+
+    let inputTituloComent = document.createElement('input')
+    let tipoText = document.createAttribute('type')
+    tipoText.value='text'
+    inputTituloComent.setAttributeNode(tipoText)
+    
+
+    let textValoracion = document.createElement('p')
+    textValoracion.appendChild(
+        document.createTextNode("Valoracion: ")
+    );
+
+    let textareavaloracionComent = document.createElement('textarea')
+
+    let botonComentar = document.createElement('input')
+    let tipoBot = document.createAttribute('type')
+    let nombreBoton = document.createAttribute('value')
+    tipoBot.value='submit'
+    nombreBoton.value='Confirmar'
+    botonComentar.setAttributeNode(tipoBot)
+    botonComentar.setAttributeNode(nombreBoton)
+    
+
+    let salto1= document.createElement('p')
+    let salto= document.createElement('p')
+
+
+
+    formulario.appendChild(textTitulo)
+    formulario.appendChild(inputTituloComent)
+    formulario.appendChild(salto1)
+    
+    formulario.appendChild(textValoracion)
+    formulario.appendChild(textareavaloracionComent)
+    formulario.appendChild(salto)
+
+    formulario.appendChild(botonComentar)
+
+
+    caja.appendChild(formulario)
+   
+    document.body.appendChild(caja)
+
+    caja.className='caja-comentar'
 }

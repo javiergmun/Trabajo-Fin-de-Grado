@@ -71,7 +71,7 @@
 		display: none;
 	}
 	.container-menu{
-		position: absolute;
+		position: fixed;
 		background: rgba(0,0,0,0.5);
 		width: 100%;
 		height: 100vh;
@@ -89,7 +89,7 @@
 		max-width: 250px;
 		background: #1c1c1c;
 		height: 100vh;
-		position: relative;
+		position: fixed;
 		transition: all 500ms ease;
 		transform: translateX(-100%);
 	}
@@ -165,9 +165,11 @@
 	    width: 50%;
 	    height: 40%;
 		margin-top: 6rem;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 3%;
+		margin-left: 4px;
+		margin-right: 400px;
+		padding: 2%;
+		float : right;
+		display: inline-block;
 	}
 	.foto-producto{
 	    width: 150px;
@@ -211,3 +213,20 @@
             transform: scale(0.98);
             box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     }
+    .caja-comentar{
+        background-color: #E97E6B;
+        width: 20%;
+	    height: 365px;
+	    margin-top: 6rem;
+		margin-left: 30px;
+		margin-right: auto;
+		padding: 3%;
+        display: inline-block;
+        float : left;
+    }
+    textarea{
+        width: 300px;
+        height: 100px;
+        resize: none;
+    }
+
