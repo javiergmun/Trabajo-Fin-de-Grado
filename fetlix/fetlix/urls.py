@@ -38,6 +38,9 @@ urlpatterns = [
     path('categoria-informatica.html/',Informatica.as_view()),
     path('categoria-servicios.html/',Servicios.as_view()),
     path('categoria-vehiculos.html/',Vehiculos.as_view()),
-    path('productos/', include('series.urls'))
+    path('productos/', include('series.urls')),
+    path('posts/', include('series.urls')),
+    path('clientes/', include('series.urls')),
+    path('empresas/', include('series.urls'))
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
