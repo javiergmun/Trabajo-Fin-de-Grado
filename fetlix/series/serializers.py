@@ -2,49 +2,23 @@ from rest_framework import serializers
 from series.models import Producto, Post_Cliente, Cliente, Empresa
 
 
-class ProductSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    nombre = serializers.CharField()
-    descripcion = serializers.CharField()
-    imagen = serializers.ImageField(allow_null=True)
-    precio = serializers.FloatField()
-    fecha_creacion = serializers.DateTimeField()
-    num_likes = serializers.IntegerField()
-    categoria = serializers.CharField()
-    empresa = serializers.CharField()
-
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
+        fields = ('id','nombre','descripcion','imagen','precio','fecha_creacion','num_likes','categoria','empresa')
 
-class PostSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    titulo = serializers.CharField()
-    descripcion = serializers.CharField()
-    fecha_creacion = serializers.DateTimeField()
-    num_likes = serializers.IntegerField()
-    categoria = serializers.CharField()
-
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post_Cliente
+        fields= ('__all__')
 
-class ClienteSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    nombre = serializers.CharField()
-    email = serializers.EmailField()
-    imagen = serializers.ImageField(allow_null=True)
-    fecha_creacion = serializers.DateTimeField()
-
+class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
+        fields=('__all__')
 
-class EmpresaSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    nombre = serializers.CharField()
-    descripcion = serializers.CharField()
-    email = serializers.EmailField()
-    imagen = serializers.ImageField(allow_null=True)
-    fecha_creacion = serializers.DateTimeField()
-
+class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresa
+        fields=('__all__')
 

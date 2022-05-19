@@ -75,8 +75,6 @@ class ProductList_ORDER_BY_LIKES(APIView):
         serializer = ProductSerializer(productos, many=True)
         return Response(serializer.data, status=status.HTTP_302_FOUND)
 
-
-
 class PostList(APIView):
     #Listar posts o crear posts TODOS
     def get(self, request , format=None):
