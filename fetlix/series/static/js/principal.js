@@ -1,6 +1,6 @@
 const API_URL ="http://127.0.0.1:8000";
 
-fetch(`${API_URL}/productos/list`)
+fetch(`${API_URL}/productos/producto`)
     .then((response)=>response.json())
     .then((response)=>{
         response.forEach((user)=>{
@@ -90,7 +90,7 @@ fetch(`${API_URL}/productos/list`)
             botonComentar.setAttributeNode(nombreBoton)
 
 
-            fetch(`${API_URL}/productos/list`)
+            fetch(`${API_URL}/productos/producto`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{

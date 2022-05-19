@@ -223,6 +223,7 @@
 		padding: 3%;
         display: inline-block;
         float : left;
+        position : fixed;
     }
     textarea{
         width: 300px;
