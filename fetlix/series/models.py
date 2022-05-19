@@ -51,8 +51,8 @@ class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(verbose_name='Nombre producto', max_length=40)
     descripcion = models.CharField(verbose_name='Descripcion de producto en empresa', max_length=500)
-    imagen = models.ImageField(verbose_name='Imagen', blank=True)
-    precio = models.FloatField(verbose_name='Precio')
+    imagen = models.ImageField(verbose_name='Imagen', upload_to='imagenes_producto/', blank=True)
+    precio = models.FloatField(verbose_name='Precio', blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
     num_likes = models.IntegerField(verbose_name='Likes', default=0)
     categoria = models.SmallIntegerField(verbose_name='Categoria Producto',choices=CATEGORIA_ELECCION, default=SERVICIOS )
@@ -66,7 +66,7 @@ class Producto(models.Model):
         ordering = ['categoria']
 
     def __str__(self):
-        return str(self.nombre) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.empresa)
+        return str(self.nombre) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.empresa)+ ' - ' + str(self.categoria)
 
     @property #decorador dice que no recibe parametros externos, se trata como un campo que no se guarda en la bbdd
     def is_famous(self):
@@ -97,7 +97,7 @@ class Post_Cliente(models.Model):
     descripcion = models.CharField('Descripcion de producto en post', max_length=100)
     opinion = models.CharField('Opinion dada por el cliente', max_length=500)
     num_likes = models.IntegerField('Likes', default=0)
-    imagen = models.ImageField(verbose_name='Imagen' , blank=True)
+    imagen = models.ImageField(verbose_name='Imagen' ,upload_to='imagenes_post/', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
     categoria = models.SmallIntegerField(verbose_name='Categoria Post',choices=CATEGORIA_ELECCION, default=SERVICIOS )
 
