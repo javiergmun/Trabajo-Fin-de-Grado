@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Opiniones App</title>
+        {% block stylesheets %}
+        <!-- AQUI INSERTAR CSS / HOJAS DE ESTILO COMPLEMENTARIAS -->
+        {% endblock %}
+        </head>
+
+        {% block BODY %}
+        <!-- AQUI INSERTAR EL BODY DE CADA PAGINA -->
+        {% endblock %}
+<header class="header">
+<div class="container">
+    <div class="btn-menu">
+        <label for="btn-menu">☰</label>
+    </div>
+    <div class="logo">
+        <h1>{% block titulo %}  {% endblock %}</h1>
+    </div>
+    <div class="busca">
+        <form>
+            <input type="search" placeholder="Buscar..." class="buscador"/><button class="btn-buscar"><span class="fas fa-search"></span></button>
+        </form>
+    </div>
+    <div>
+        <nav class="menu">
+            <a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'perfil' %}">{{ user.username }}</a>
+                {% else %}
+                <a href="{% url 'login' %}">Perfil</a>
+                {% endif %}
+            </a>
+            <a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Cerrar sesion</a>
+                {% else %}
+                <a href="{% url 'login' %}">Iniciar sesion</a>
+                {% endif %}
+            </a>
+        </nav>
+    </div>
+</div>
+</header>
+
+<div class="capa"></div>
+
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+    <div class="cont-menu">
+        <nav>
+            <a href="">Inicio</a>
+            <a href="/categorias/comida">Comida y Bebida</a>
+            <a href="/categorias/moda">Moda y Maquillaje</a>
+            <a href="/categorias/informatica">Informática</a>
+            <a href="/categorias/hogar">Hogar y Herramientas</a>
+            <a href="/categorias/vehiculos">Vehiculos</a>
+            <a href="/categorias/servicios">Servicios</a>
+        </nav>
+            <label for="btn-menu">✖️</label>
+    </div>
+</div>
+
+    {% block script1 %}
+    <!-- AQUI INSERTAR RUTA AL JS PARA CADA HOJA -->
+    {% endblock %}
+
+
+</body>
+</html>

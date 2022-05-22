@@ -8,19 +8,50 @@ from django.urls import path, include
 from series.views import Perfil
 
 urlpatterns = [
-    path('producto/', views.ProductList.as_view(), name="productos_lista"),
-    path('post/', views.PostList.as_view(), name="post_lista"),
-    path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),
-    path('empresa/', views.EmpresaList.as_view(), name="empresa_lista"),
-    path('comida/', views.ProductList_COMIDA.as_view(), name="empresa_lista"),
-    path('hogar/', views.ProductList_HOGAR.as_view(), name="empresa_lista"),
-    path('informatica/', views.ProductList_INFORMATICA.as_view(), name="empresa_lista"),
-    path('moda/', views.ProductList_MODA.as_view(), name="empresa_lista"),
-    path('servicios/', views.ProductList_SERVICIOS.as_view(), name="empresa_lista"),
-    path('vehiculos/', views.ProductList_VEHICULOS.as_view(), name="empresa_lista"),
-    path('otros/', views.ProductList_OTROS.as_view(), name="empresa_lista"),
-    path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
-    path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
+    ##### ENDPOINTS PERFIL 2.0 ##### TODO CAMBIARLO A LAS URL BASE YA QUE NO DEPENDE DE NADIE
     path('perfil/', views.Perfil.as_view(), name="perfil"),
+
+    ##### CATEGORIAS MENU 2.0 #####
+    path('comida',views.Comida.as_view(), name="comida"),
+    path('moda',views.Moda.as_view(), name="moda"),
+    path('informatica',views.Informatica.as_view(), name="informatica"),
+    path('hogar',views.Hogar.as_view(), name="hogar"),
+    path('vehiculos',views.Vehiculos.as_view(), name="vehiculos"),
+    path('servicios',views.Servicios.as_view(), name="servicios"),
+
+    ##### ENDPOINTS PRODUCTO 2.0 #####
+    path('producto/', views.ProductList.as_view(), name="productos_lista"),
+
+    ##### ENDPOINTS POST 2.0 #####
+    path('post/', views.PostList.as_view(), name="post_lista"),
+
+    ##### ENDPOINTS CLIENTE 2.0 #####
+    path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),
+
+    ##### ENDPOINTS EMPRESA 2.0 #####
+    path('empresa/', views.EmpresaList.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA COMIDA 2.0 #####
+    path('comida/', views.ProductList_COMIDA.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA HOGAR 2.0 #####
+    path('hogar/', views.ProductList_HOGAR.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA INFORMATICA 2.0 #####
+    path('informatica/', views.ProductList_INFORMATICA.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA MODA 2.0 #####
+    path('moda/', views.ProductList_MODA.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA SERVICIOS 2.0 #####
+    path('servicios/', views.ProductList_SERVICIOS.as_view(), name="empresa_lista"),
+
+    ##### ENDPOINTS CATEGORIA VEHICULOS 2.0 #####
+    path('vehiculos/', views.ProductList_VEHICULOS.as_view(), name="empresa_lista"),
+
+    path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
+    path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
+
+
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

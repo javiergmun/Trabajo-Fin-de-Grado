@@ -20,6 +20,7 @@ from django.template.defaulttags import url
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+import series
 from series.views import Inicio
 from series.views import Perfil
 from series.views import Comida
@@ -30,32 +31,37 @@ from series.views import Servicios
 from series.views import Vehiculos
 
 urlpatterns = [
+    ##### ADMINISTRADOR #####
     path('admin/', admin.site.urls),
-    #path('',Inicio.as_view()),
+    ##### BASE / RAIZ #####
     path('',TemplateView.as_view(template_name='index.html'),name='home'),
-    #path('perfil.html/',Perfil.as_view()),
-    path('categoria-comida.html/',Comida.as_view()),
-    path('categoria-moda.html/',Moda.as_view()),
-    path('categoria-hogar.html/',Hogar.as_view()),
-    path('categoria-informatica.html/',Informatica.as_view()),
-    path('categoria-servicios.html/',Servicios.as_view()),
-    path('categoria-vehiculos.html/',Vehiculos.as_view()),
+
+    ##### CATEGORIAS MENU 1.0 #####
+    path('categorias/', include('series.urls')),
+
+    ##### ENDPOINTS #####
     path('productos/', include('series.urls')),
     path('posts/', include('series.urls')),
     path('clientes/', include('series.urls')),
     path('empresas/', include('series.urls')),
-    #AUTENTIFICACION (URLS QUE IMPORTA)
-        #^accounts/login/$ [name='login']
-        #^accounts/logout/$ [name='logout']
-        #^accounts/password_change/$ [name='password_change']
-        #^accounts/password_change/done/$ [name='password_change_done']
-        #^accounts/password_reset/$ [name='password_reset']
-        #^accounts/password_reset/done/$ [name='password_reset_done']
-        #^accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$ [name='password_reset_confirm']
-        #^accounts/reset/done/$ [name='password_reset_complete']
+
+    ##### LOGIN / REGISTRO / AUTENTIFICACION #####
     path('accounts/', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls'))
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+
+# AUTENTIFICACION (URLS QUE IMPORTA)
+# ^accounts/login/$ [name='login']
+# ^accounts/logout/$ [name='logout']
+# ^accounts/password_change/$ [name='password_change']
+# ^accounts/password_change/done/$ [name='password_change_done']
+# ^accounts/password_reset/$ [name='password_reset']
+# ^accounts/password_reset/done/$ [name='password_reset_done']
+# ^accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$ [name='password_reset_confirm']
+# ^accounts/reset/done/$ [name='password_reset_complete']
 
 

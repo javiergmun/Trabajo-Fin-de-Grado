@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Opiniones App</title>
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap-reboot.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/estilo.css' %} " type="text/css" media="screen">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+     </head>
+     <body style="background: url(https://img.freepik.com/foto-gratis/espacio-exposicion-vacio-foro-empresarial-telon-fondo-exposiciones-eventos-suelo-baldosas-maqueta-marketing-ilustracion-render-3d_161844-345.jpg);
+                background-repeat: no-repeat;
+                background-size: 100vw 100vh;
+                background-attachment: fixed;">
+     <script src="{% static 'js/principal.js' %}"></script>
+        <header class="header">
+            <div class="container">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>
+                <div class="logo">
+                    <h1>Opiniones</h1>
+                </div>
+                <div class="busca">
+                    <form>
+                        <input type="search" placeholder="Buscar..." class="buscador"/><button class="btn-buscar"><span class="fas fa-search"></span></button>
+                    </form>
+                </div>
+                <div>
+                    <nav class="menu">
+                        <a>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'perfil' %}">{{ user.username }}</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}">Perfil</a>
+                                {% endif %}
+                        </a>
+                        <a>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'logout' %}">Cerrar sesion</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}">Iniciar sesion</a>
+                                {% endif %}
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="capa"></div>
+
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="">Inicio</a>
+                <a href="categoria-comida.html">Comida y Bebida</a>
+                <a href="categoria-moda.html">Moda y Maquillaje</a>
+                <a href="categoria-informatica.html">Informática</a>
+                <a href="categoria-hogar.html">Hogar y Herramientas</a>
+                <a href="categoria-vehiculos.html">Vehiculos</a>
+                <a href="categoria-servicios.html">Servicios</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+
+     <!--<div class="producto">
+         <img class="foto-producto" src="https://definicion.de/wp-content/uploads/2009/06/producto.png" width="150">
+         <div class="datos" id="datos">
+             <span class="fas fa-box "></span> <i id="nombrecito">Nombre</i>    </br></br></br>
+             <span class="fas fa-user"></span><i id="empresa">Empresa</i>   </br></br></br>
+             <span class="fas fa-money-bill"></span><i id="precio" Precio€></i>     </br></br></br>
+             <span class="fas fa-heart "></span><i id="mg" NºMG></i>    </br></br></br>
+         </div>
+         </br></br></br></br></br></br></br>
+         <span class="fas fa-comment"></span> Comentarios:
+         <div class="comentarios">
+             </br>
+             <div class="comentario">
+                 Usuario Posteador</br></br>
+                 <p>Descripcion/Valoracion</p>
+             </div>
+         </div>
+         </br>
+         <input type="button" class="boton-comentar" value="Comentar"/>
+     </div>
+     -->
+
+
+    </body>
+    </html>
+    <!--<body>
+        <header class="cabecera">
+            <div class="datos_cabecera">
+
+                <div class="btn-menu">
+                    <label for="btn-menu" class="fas fa-bars"></label>
+                </div>
+
+
+                <input class="buscador" type="text" name="Buscador" placeholder="Buscador..."/>
+                <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/98/Logos.svg"/>
+                <button>Perfil</button>
+                <button class="login">Login</button>
+            </div>
+        </header>
+        <input type="checkbox" id="btn-menu"/>
+        <div class="container-menu">
+            <div class="cont-menu">
+                <nav>
+                    <a href="#">FF</a>
+                    <a href="#">aF</a>
+                    <a href="#">dd</a>
+                    <a href="#">ff</a>
+                    <a href="#">54</a>
+                </nav>
+                <label for="" class="icon-equis"></label>
+            </div>
+        </div>
+        <div>
+            <section>
+                <article>
+
+                </article>
+            </section>
+        </div>
+
+    </body>-->
