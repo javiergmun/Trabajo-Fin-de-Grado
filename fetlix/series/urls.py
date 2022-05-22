@@ -5,7 +5,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from series import views
 from django.urls import path, include
 
-
+from series.views import Perfil
 
 urlpatterns = [
     path('producto/', views.ProductList.as_view(), name="productos_lista"),
@@ -20,5 +20,7 @@ urlpatterns = [
     path('vehiculos/', views.ProductList_VEHICULOS.as_view(), name="empresa_lista"),
     path('otros/', views.ProductList_OTROS.as_view(), name="empresa_lista"),
     path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
+    path('ord_likes/', views.ProductList_ORDER_BY_LIKES.as_view(), name="empresa_lista"),
+    path('perfil/', views.Perfil.as_view(), name="perfil"),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

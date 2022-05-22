@@ -10,6 +10,7 @@
 		background-size: 100vw 100vh;
 		background-repeat: no-repeat;
 	}
+
 	.capa{
 		position: fixed;
 		width: 100%;
@@ -70,6 +71,7 @@
 	#btn-menu{
 		display: none;
 	}
+
 	.container-menu{
 		position: fixed;
 		background: rgba(0,0,0,0.5);
@@ -123,6 +125,7 @@
 	/*
 	// Pagina Perfil
 	*/
+
 
     /*BUSCADOR*/
     ::placeholder{

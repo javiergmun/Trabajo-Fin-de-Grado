@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.template.defaulttags import url
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from series.views import Inicio
 from series.views import Perfil
@@ -30,8 +31,9 @@ from series.views import Vehiculos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',Inicio.as_view()),
-    path('perfil.html/',Perfil.as_view()),
+    #path('',Inicio.as_view()),
+    path('',TemplateView.as_view(template_name='index.html'),name='home'),
+    #path('perfil.html/',Perfil.as_view()),
     path('categoria-comida.html/',Comida.as_view()),
     path('categoria-moda.html/',Moda.as_view()),
     path('categoria-hogar.html/',Hogar.as_view()),
@@ -51,7 +53,8 @@ urlpatterns = [
         #^accounts/password_reset/done/$ [name='password_reset_done']
         #^accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$ [name='password_reset_confirm']
         #^accounts/reset/done/$ [name='password_reset_complete']
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

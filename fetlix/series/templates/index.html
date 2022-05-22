@@ -29,8 +29,20 @@
                 </div>
                 <div>
                     <nav class="menu">
-                        <a href="perfil.html">Perfil</a>
-                        <a href="#">Login</a>
+                        <a>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'perfil' %}">{{ user.username }}</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}">Perfil</a>
+                                {% endif %}
+                        </a>
+                        <a>
+                                {% if user.is_authenticated %}
+                                    <a href="{% url 'logout' %}">Cerrar sesion</a>
+                                        {% else %}
+                                            <a href="{% url 'login' %}">Iniciar sesion</a>
+                                {% endif %}
+                        </a>
                     </nav>
                 </div>
             </div>
