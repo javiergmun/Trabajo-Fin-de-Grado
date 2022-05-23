@@ -1,48 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "base.html" %}
 {% load static %}
-    <head>
-        <meta charset="UTF-8">
-        <title>Opiniones App</title>
-        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap-reboot.min.css' %}">
+{% block titulo %} Servicios {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap-reboot.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/estilo.css' %} " type="text/css" media="screen">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-     </head>
-    <body style="background: url(https://introcrea.com/wp-content/uploads/2017/05/fondo-servicios-intro-2017-9.png);
-                background-repeat: no-repeat;
-                background-size: 100vw 100vh;">
-        <header class="header">
-            <div class="container">
-            <div class="btn-menu">
-                <label for="btn-menu">☰</label>
-            </div>
-                <div class="logo">
-                    <h1>Opiniones</h1>
-                </div>
-                <nav class="menu">
-                    <a href="perfil.html">Perfil</a>
-                    <a href="#">Login</a>
-                </nav>
-            </div>
-        </header>
+{% endblock %}
 
-        <div class="capa"></div>
+{% block BODY %}
+<body style="background: url(https://introcrea.com/wp-content/uploads/2017/05/fondo-servicios-intro-2017-9.png);
+             background-repeat: no-repeat;
+             background-size: 100vw 100vh;
+             background-attachment: fixed;">
+{% endblock %}
 
-    <input type="checkbox" id="btn-menu">
-    <div class="container-menu">
-        <div class="cont-menu">
-            <nav>
-                <a href="">Inicio</a>
-                <a href="categoria-comida.html">Comida y Bebida</a>
-                <a href="categoria-moda.html">Moda y Maquillaje</a>
-                <a href="categoria-informatica.html">Informática</a>
-                <a href="categoria-hogar.html">Hogar y Herramientas</a>
-                <a href="categoria-vehiculos.html">Vehiculos</a>
-                <a href="">Servicios</a>
-            </nav>
-            <label for="btn-menu">✖️</label>
-        </div>
-    </div>
+{% block script1 %}
 
-    </body>
-    </html>
+{% endblock %}
+

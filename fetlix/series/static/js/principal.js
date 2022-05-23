@@ -69,13 +69,31 @@ fetch(`${API_URL}/productos/producto`)
     
             //---------
 
+            let descripcion = document.createElement('p')
+            let idDescripcion= document.createAttribute('id')
+            let descripcionIcono = document.createElement('span')
+            idDescripcion.value='descripcion'
+            descripcionIcono.className='fas fa-scroll'
+            descripcion.appendChild(descripcionIcono)
+            descripcion.appendChild(
+                document.createTextNode(" "+user.descripcion)
+            );
+            descripcion.setAttributeNode(idDescripcion)
+            descripcion.className='descripcion'
+            //---------
+
             let textComentarios = document.createElement('p')
+            let idTextComentarios= document.createAttribute('id')
             let comentariosIcono = document.createElement('span')
+            idTextComentarios.value='textComentario'
             comentariosIcono.className='fas fa-comment'
             textComentarios.appendChild(comentariosIcono)
             textComentarios.appendChild(
                 document.createTextNode(" Comentarios: ")
             );
+            textComentarios.setAttributeNode(idTextComentarios)
+            textComentarios.className='textComentario'
+            
             //---------
 
             let botonComentar = document.createElement('input')
@@ -128,6 +146,7 @@ fetch(`${API_URL}/productos/producto`)
         
             productos.appendChild(imagen)
             productos.appendChild(dato)
+            productos.appendChild(descripcion)
             productos.appendChild(textComentarios)
             productos.appendChild(comentarios)
             productos.appendChild(botonComentar)

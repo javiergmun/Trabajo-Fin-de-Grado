@@ -125,6 +125,27 @@
 	/*
 	// Pagina Perfil
 	*/
+    /*Centrado Perfil*/
+	.centrado{
+		background-color: white;
+		width: 50%;
+		margin-top: 8rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3%;
+	}
+
+    /*PAGINA LOGIN*/
+
+    .caja-login{
+        border-radius: 5px;
+        background-color: white;
+		width: 50%;
+		margin-top: 8rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3%;
+    }
 
 
     /*BUSCADOR*/
@@ -152,18 +173,11 @@
         color: white;
     }
 
-    /*Centrado Perfil*/
-	.centrado{
-		background-color: white;
-		width: 50%;
-		margin-top: 8rem;
-		margin-left: auto;
-		margin-right: auto;
-		padding: 3%;
-	}
+
 
 	/*ITEM DE LA WEB*/
 	.producto{
+	    border-radius: 5px;
 	    background-color: #A0EAE9;
 	    width: 50%;
 	    height: 40%;
@@ -182,12 +196,23 @@
 	.datos{
 		float: right;
 		margin-right: 50px;
+		margin-left: 20px;
 		text-color: black
 	}
-	#iconoMeGusta:active{
+	#iconoMeGusta{
 	    color: red;
 	}
+	#textComentario{
+	    float: left;
+	    margin-right: 600px
+	}
+	#descripcion{
+
+	    padding-left: 175px;
+
+	}
 	.comentarios{
+	    border-radius: 5px;
 	    background-color: white;
 	    height: 7em;
         line-height: 1em;
@@ -216,9 +241,11 @@
             transform: scale(0.98);
             box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     }
+    /*Caja comentario*/
     .caja-comentar{
+        border-radius: 5px;
         background-color: #E97E6B;
-        width: 20%;
+        width: 400px;
 	    height: 365px;
 	    margin-top: 6rem;
 		margin-left: 30px;
@@ -229,8 +256,8 @@
         position : fixed;
     }
     textarea{
-        width: 300px;
+        width: 270px;
         height: 100px;
-        resize: none;
+        outline: none;
     }
 
