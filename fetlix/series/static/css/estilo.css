@@ -22,7 +22,7 @@
 	/*Estilos para el encabezado*/
 	.header{
 		width: 100%;
-		background-image: linear-gradient(to right, rgba(0,0,0, 0) , rgba(0,0,0, 1),rgba(0,0,0, 1),rgba(0,0,0, 1), rgba(0,0,0, 0));
+		background-image: linear-gradient(to right, rgba(0,0,0, 0) , rgba(0,0,0, 1),rgba(0,0,0, 1),rgba(0,0,0, 1),rgba(0,0,0, 1),rgba(0,0,0, 1), rgba(0,0,0, 0));
 		height: 100px;
 		position: fixed;
 		top: 0;left: 0;
@@ -139,10 +139,8 @@
     /*PAGINA LOGIN*/
 
     .caja-login{
-
         border-radius: 170px;
         background-image: linear-gradient(rgba(255,255,255, 1),rgba(255,255,255, 0.5));
-
 		width: 50%;
 		margin-top: 8rem;
 		margin-left: auto;
@@ -150,8 +148,91 @@
 		padding: 3%;
 		padding-left: 0;
 		padding-right: 0;
+    }
+    #btn-iniciar_sesion{
+        border: 1px solid grey;
+        border-radius: 7px;
+	    background-color: white;
+	    text-align: center;
+	    padding: 1px 5px;
+	    margin-top: 5px;
+	    margin-left: 45%;
+	    font-family: 'Montserrat Alternates', sans-serif;
+	    display: inline-block;
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	}
+	#btn-iniciar_sesion:hover{
+        border: 1px solid grey;
+        border-radius: 7px;
+	    background-color: #DFF3F3;
+	    text-align: center;
+	    padding: 1px 5px;
+	    display: inline-block;
+	    font-family: 'Montserrat Alternates', sans-serif;
+	    display: inline-block;
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
+	}
+    label{
+	    margin-left: 30%;
+        display: inline-block;
+        text-align: right;
+	}
+	#id_username{
+	    border: 1px solid grey;
+        border-radius: 4px;
+        width: 25%;
+        padding-left: 7px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        display: inline-block;
 
+	}
+	#id_username:hover{
+	    border: 1px solid grey;
+	    transition-duration: 0.4s;
+        border-radius: 4px;
+        width: 25%;
+        padding-left: 7px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
 
+	}
+	#id_password{
+	    border: 1px solid grey;
+        border-radius: 4px;
+        width: 25%;
+        padding-left: 7px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+	}
+	#id_password:hover{
+	    border: 1px solid grey;
+	    transition-duration: 0.4s;
+        border-radius: 4px;
+        width: 25%;
+        padding-left: 7px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
+	}
+    h2{
+        text-align:center;
+        color: black;
+        font-size: 2em;
+        font-family: 'Montserrat Alternates', sans-serif;
+    }
+    h3{
+        text-align:center;
+        color: #43464b;
+        margin-top: -2.5em;
+        margin-bottom: 2.5em;
+        font-size: 0.8em;
+        font-family: 'Google', sans-serif;
+        margin_top: 3px;
     }
 
 
@@ -267,96 +348,5 @@
         height: 100px;
         outline: none;
     }
-    #btn-iniciar_sesion{
-        border: 1px solid grey;
-        border-radius: 7px;
-	    background-color: white;
-	    text-align: center;
-	    padding: 1px 5px;
-	    margin-top: 5px;
-	    margin-left: 45%;
-	    font-family: 'Montserrat Alternates', sans-serif;
-	    display: inline-block;
-	    transition-duration: 0.4s;
-	    cursor: pointer;
-	}
-	#btn-iniciar_sesion:hover{
-        border: 1px solid grey;
-        border-radius: 7px;
-	    background-color: #DFF3F3;
-	    text-align: center;
-	    padding: 1px 5px;
-	    display: inline-block;
-	    font-family: 'Montserrat Alternates', sans-serif;
-	    display: inline-block;
-	    transition-duration: 0.4s;
-	    cursor: pointer;
-	    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
-	}
-    label{
-	    margin-left: 30%;
-        display: inline-block;
-        text-align: right;
-	}
 
-	#id_username{
-	    border: 1px solid grey;
-        border-radius: 4px;
-        width: 25%;
-        padding-left: 7px;
-        padding-top: 1px;
-        padding-bottom: 1px;
-        display: inline-block;
-
-	}
-
-	#id_username:hover{
-	    border: 1px solid grey;
-	    transition-duration: 0.4s;
-        border-radius: 4px;
-        width: 25%;
-        padding-left: 7px;
-        padding-top: 1px;
-        padding-bottom: 1px;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
-
-	}
-
-	#id_password{
-	    border: 1px solid grey;
-        border-radius: 4px;
-        width: 25%;
-        padding-left: 7px;
-        padding-top: 1px;
-        padding-bottom: 1px;
-	}
-
-	#id_password:hover{
-	    border: 1px solid grey;
-	    transition-duration: 0.4s;
-        border-radius: 4px;
-        width: 25%;
-        padding-left: 7px;
-        padding-top: 1px;
-        padding-bottom: 1px;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.2), 0 17px 50px 0 rgba(0,0,0,0);
-
-	}
-
-    h2{
-        text-align:center;
-        color: black;
-        font-size: 2em;
-        font-family: 'Montserrat Alternates', sans-serif;
-
-    }
-    h3{
-        text-align:center;
-        color: #43464b;
-        margin-top: -2.5em;
-        margin-bottom: 2.5em;
-        font-size: 0.8em;
-        font-family: 'Google', sans-serif;
-        margin_top: 3px;
-    }
 
