@@ -49,8 +49,8 @@ class Producto(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(verbose_name='Nombre producto', max_length=40)
-    descripcion = models.CharField(verbose_name='Descripcion de producto en empresa', max_length=500)
+    nombre = models.CharField(verbose_name='Nombre producto', max_length=25)
+    descripcion = models.CharField(verbose_name='Descripcion de producto en empresa', max_length=300)
     imagen = models.ImageField(verbose_name='Imagen', upload_to='series/static/img/imagenes_producto', blank=True)
     precio = models.FloatField(verbose_name='Precio', blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
@@ -93,7 +93,7 @@ class Post_Cliente(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    titulo = models.CharField('Titulo del post', max_length=40)
+    titulo = models.CharField('Titulo del post', max_length=25)
     descripcion = models.CharField('Descripcion de producto en post', max_length=100)
     opinion = models.CharField('Opinion dada por el cliente', max_length=500, blank= True)
     num_likes = models.IntegerField('Likes', default=0, blank=True)
