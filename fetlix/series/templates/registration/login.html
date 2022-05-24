@@ -14,11 +14,12 @@
              background-size: 100vw 100vh;
              background-attachment: fixed;">
 <div class="caja-login">
-    <h2>Log In</h2></br>
+    <h2>Inicio de sesion</h2></br>
+    <h3>Introduzca sus creedenciales</h3>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Log In</button>
+      <button type="submit" id="btn-iniciar_sesion">Iniciar sesion</button>
     </form>
 </div>
 
