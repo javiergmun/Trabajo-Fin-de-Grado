@@ -1,52 +1,17 @@
-
-<!DOCTYPE html>
-<html lang="es">
+{% extends "base.html" %}
 {% load static %}
-    <head>
-        <meta charset="UTF-8">
-        <title>Opiniones App</title>
+{% block titulo %} Perfil de {{ user.username }} {% endblock %}
+
+{% block stylesheets %}
         <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap-reboot.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/estilo.css' %} " type="text/css" media="screen">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    </head>
+{% endblock %}
+
+{% block BODY %}
     <body style="background-repeat: no-repeat;
                 background-size: 100vw 100vh;
                 background-attachment: fixed;">
-        <header class="header">
-            <div class="container">
-            <div class="btn-menu">
-                <label for="btn-menu">☰</label>
-            </div>
-                <div class="logo">
-                    <h1>Opiniones</h1>
-                </div>
-                <nav class="menu">
-                    <a href="{% url 'perfil' %}">Perfil</a>
-                    <a href="#">Login</a>
-                </nav>
-            </div>
-        </header>
-
-        <div class="capa"></div>
-
-
-    <input type="checkbox" id="btn-menu">
-    <div class="container-menu">
-        <div class="cont-menu">
-            <nav>
-                <a href="/">Inicio</a>
-                <a href="/categorias/comida">Comida y Bebida</a>
-                <a href="/categorias/moda">Moda y Maquillaje</a>
-                <a href="/categorias/informatica">Informática</a>
-                <a href="/categorias/hogar">Hogar y Herramientas</a>
-                <a href="/categorias/vehiculos">Vehiculos</a>
-                <a href="/categorias/servicios">Servicios</a>
-            </nav>
-            <label for="btn-menu">✖️</label>
-        </div>
-    </div>
-
-
     <div class="centrado">
         <img src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" width="200" height="120" ></br></br>
         Usuario:<p>{{ user.username }}</p></br>
@@ -54,9 +19,9 @@
         Rol: <p>{{ user.groups.all_0 }}</p></br>
         Correo:<p>{{ user.email }}</p></br>
         Último inicio de sesión:<p>{{ user.last_login }}</p></br>
-
     </div>
+{% endblock %}
 
-    </body>
 
-</html>
+
+
