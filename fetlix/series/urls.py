@@ -9,7 +9,7 @@ from series.views import Perfil
 
 urlpatterns = [
     ##### ENDPOINTS PERFIL 2.0 ##### TODO CAMBIARLO A LAS URL BASE YA QUE NO DEPENDE DE NADIE
-    path('perfil/', views.Perfil.as_view(), name="perfil"),
+    path('perfil', views.Perfil.as_view(), name="perfil"),
 
     ##### CATEGORIAS MENU 2.0 #####
     path('comida',views.Comida.as_view(), name="comida"),
@@ -32,19 +32,19 @@ urlpatterns = [
     path('empresa/', views.EmpresaList.as_view(), name="empresa_lista"),
 
     ##### ENDPOINTS CATEGORIA COMIDA 2.0 #####
-    path('comida/', views.ProductList_COMIDA.as_view(), name="empresa_lista"),
+    path('comida/', views.ProductList_COMIDA.as_view(), name="cat_comida_lista"),
 
     ##### ENDPOINTS CATEGORIA HOGAR 2.0 #####
-    path('hogar/', views.ProductList_HOGAR.as_view(), name="empresa_lista"),
+    path('hogar/', views.ProductList_HOGAR.as_view(), name="cat_hogar_lista"),
 
     ##### ENDPOINTS CATEGORIA INFORMATICA 2.0 #####
-    path('informatica/', views.ProductList_INFORMATICA.as_view(), name="empresa_lista"),
+    path('informatica/', views.ProductList_INFORMATICA.as_view(), name="cat_informatica_lista"),
 
     ##### ENDPOINTS CATEGORIA MODA 2.0 #####
-    path('moda/', views.ProductList_MODA.as_view(), name="empresa_lista"),
+    path('moda/', views.ProductList_MODA.as_view(), name="cat_modalista"),
 
     ##### ENDPOINTS CATEGORIA SERVICIOS 2.0 #####
-    path('servicios/', views.ProductList_SERVICIOS.as_view(), name="empresa_lista"),
+    path('servicios/', views.ProductList_SERVICIOS.as_view(), name="cat_servicios_lista"),
 
     ##### ENDPOINTS CATEGORIA VEHICULOS 2.0 #####
     path('vehiculos/', views.ProductList_VEHICULOS.as_view(), name="empresa_lista"),

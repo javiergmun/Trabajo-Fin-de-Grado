@@ -33,8 +33,7 @@ from series.views import Vehiculos
 urlpatterns = [
     ##### ADMINISTRADOR #####
     path('admin/', admin.site.urls),
-    ##### BASE / RAIZ #####
-    path('',TemplateView.as_view(template_name='index.html'),name='home'),
+
 
     ##### CATEGORIAS MENU 1.0 #####
     path('categorias/', include('series.urls')),
@@ -42,8 +41,12 @@ urlpatterns = [
     ##### ENDPOINTS #####
     path('productos/', include('series.urls')),
     path('posts/', include('series.urls')),
-    path('clientes/', include('series.urls')),
     path('empresas/', include('series.urls')),
+    path('clientes/', include('series.urls')),
+
+    ##### BASE / RAIZ #####
+    path('',TemplateView.as_view(template_name='index.html'),name='home'),
+
 
     ##### LOGIN / REGISTRO / AUTENTIFICACION #####
     path('accounts/', include('django.contrib.auth.urls')),
