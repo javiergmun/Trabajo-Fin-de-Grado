@@ -18,15 +18,15 @@ class Cliente(models.Model):
 
 class Empresa(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(verbose_name='Nombre empresa', max_length=40, unique=True)
-    descripcion = models.CharField(verbose_name='Descripcion de producto en post', max_length=100)
+    nombre = models.CharField(verbose_name='Nombre de empresa', max_length=40, unique=True)
+    descripcion = models.CharField(verbose_name='Descripcion de empresa', max_length=100)
     email = models.EmailField(verbose_name='Email empresa', max_length=40, unique=True)
     contrasena = models.CharField(verbose_name='Contraseña empresa', max_length=40)
-    imagen = models.ImageField(verbose_name='Imagen', upload_to='imagenes_empresa/', blank=True)
+    imagen = models.ImageField(verbose_name='Imagen corporativa de la empresa', upload_to='imagenes_empresa/', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
     def __str__(self):
-        return str(self.nombre)
+        return self.nombre
 
 class Producto(models.Model):
 
@@ -50,14 +50,14 @@ class Producto(models.Model):
 
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(verbose_name='Nombre producto', max_length=25)
-    descripcion = models.CharField(verbose_name='Descripcion de producto en empresa', max_length=300)
-    imagen = models.ImageField(verbose_name='Imagen', upload_to='series/static/img/imagenes_producto', blank=True)
-    precio = models.FloatField(verbose_name='Precio', blank= True)
+    descripcion = models.CharField(verbose_name='Descripcion del producto (facilitado por la empresa)', max_length=300)
+    imagen = models.ImageField(verbose_name='Imagen del producto', upload_to='series/static/img/imagenes_producto', blank=True)
+    precio = models.FloatField(verbose_name='Precio del producto', blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
     num_likes = models.IntegerField(verbose_name='Likes', default=0)
     categoria = models.SmallIntegerField(verbose_name='Categoria Producto',choices=CATEGORIA_ELECCION, default=SERVICIOS )
 
-    empresa = models.ForeignKey(Empresa,related_name="productos", on_delete=models.CASCADE)
+    empresa = models.ForeignKey(Empresa , related_name="productos", on_delete=models.CASCADE)
 
     #metadatos nombre de la clase y como aparecen en la bbdd
     class Meta:
@@ -73,6 +73,7 @@ class Producto(models.Model):
         return self.num_likes > 5
 
 class Post_Cliente(models.Model):
+    #comentario
 
     COMIDA=1
     HOGAR=2
@@ -93,17 +94,12 @@ class Post_Cliente(models.Model):
     )
 
     id = models.AutoField(primary_key=True)
-    titulo = models.CharField('Titulo del post', max_length=25)
-    descripcion = models.CharField('Descripcion de producto en post', max_length=100)
+    titulo = models.CharField('Nombre del producto', max_length=25)
     opinion = models.CharField('Opinion dada por el cliente', max_length=500, blank= True)
-    num_likes = models.IntegerField('Likes', default=0, blank=True)
-    imagen = models.ImageField(verbose_name='Imagen' ,upload_to='imagenes_post/', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
-    categoria = models.SmallIntegerField(verbose_name='Categoria Post',choices=CATEGORIA_ELECCION, default=SERVICIOS, blank=True)
-
 
     cliente = models.ForeignKey(Cliente,related_name="post_cliente", on_delete=models.CASCADE)
 
 
     def __str__(self):
-        return str(self.titulo) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.cliente)
+        return str(self.titulo) + ' - ' + str(self.cliente)

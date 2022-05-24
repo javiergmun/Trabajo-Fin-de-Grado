@@ -3,6 +3,8 @@ from series.models import Producto, Post_Cliente, Cliente, Empresa
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    empresa= serializers.StringRelatedField()
+
     class Meta:
         model = Producto
         fields = ('id','nombre','descripcion','imagen','precio','fecha_creacion','num_likes','categoria','empresa')

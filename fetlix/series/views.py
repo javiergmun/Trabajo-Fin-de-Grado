@@ -114,7 +114,7 @@ class PostList(APIView):
 class ClienteList(APIView):
     #Listar cliente o crear cliente
     def get(self, request , format=None):
-        posts = Cliente.objects.all().filter()
+        posts = Cliente.objects.all()
         serializer = ClienteSerializer(posts, many=True)
         return Response(serializer.data)
 
