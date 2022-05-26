@@ -14,7 +14,7 @@ class Cliente(models.Model):
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
     def __str__(self):
-        return str(self.nombre) + ' - ' + str(self.email) + ' - ' + str(self.fecha_creacion)
+        return str(self.nombre)
 
 class Empresa(models.Model):
     id = models.AutoField(primary_key=True)
@@ -66,7 +66,7 @@ class Producto(models.Model):
         ordering = ['categoria']
 
     def __str__(self):
-        return str(self.nombre) + ' - ' + str(self.fecha_creacion) + ' - ' + str(self.empresa)+ ' - ' + str(self.categoria)
+        return str(self.nombre)
 
     @property #decorador dice que no recibe parametros externos, se trata como un campo que no se guarda en la bbdd
     def is_famous(self):
@@ -75,30 +75,14 @@ class Producto(models.Model):
 class Post_Cliente(models.Model):
     #comentario
 
-    COMIDA=1
-    HOGAR=2
-    INFORMATICA=3
-    MODA=4
-    SERVICIOS=5
-    VEHICULOS=6
-    OTROS=7
-
-    CATEGORIA_ELECCION= (
-        (COMIDA,"Comida"),
-        (HOGAR,"Hogar"),
-        (INFORMATICA,"Informatica"),
-        (MODA,"Moda"),
-        (SERVICIOS,"Servicios"),
-        (VEHICULOS,"Vehiculos"),
-        (OTROS,"Otros"),
-    )
-
     id = models.AutoField(primary_key=True)
     titulo = models.CharField('Nombre del producto', max_length=25)
     opinion = models.CharField('Opinion dada por el cliente', max_length=500, blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
-    cliente = models.ForeignKey(Cliente,related_name="post_cliente", on_delete=models.CASCADE)
+
+    cliente = models.ForeignKey(Cliente,related_name="propietario", on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, related_name="comentario", on_delete=models.CASCADE)
 
 
     def __str__(self):
-        return str(self.titulo) + ' - ' + str(self.cliente)
+        return str(self.producto) + ' - ' + str(self.cliente)

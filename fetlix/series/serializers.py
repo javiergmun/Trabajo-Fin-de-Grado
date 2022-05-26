@@ -11,9 +11,11 @@ class ProductSerializer(serializers.ModelSerializer):
         #fields = ('__all__')
 
 class PostSerializer(serializers.ModelSerializer):
+    producto = serializers.StringRelatedField()
+    cliente = serializers.StringRelatedField()
     class Meta:
         model = Post_Cliente
-        fields= ('__all__')
+        fields= ('id','titulo','opinion','fecha_creacion','cliente','producto')
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
