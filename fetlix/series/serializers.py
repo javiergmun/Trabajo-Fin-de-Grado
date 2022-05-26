@@ -8,6 +8,7 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = ('id','nombre','descripcion','imagen','precio','fecha_creacion','num_likes','categoria','empresa')
+        #fields = ('__all__')
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:

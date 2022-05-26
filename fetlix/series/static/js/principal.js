@@ -17,7 +17,7 @@ fetch(`${API_URL}/productos/producto`)
             let imagen = document.createElement('img')
             let foto = document.createAttribute('src')
             
-            foto.value=user.imagen
+            foto.value=`${user.imagen}`
             imagen.setAttributeNode(foto)
 
             //let salto= document.createElement('br')

@@ -97,7 +97,6 @@ class Post_Cliente(models.Model):
     titulo = models.CharField('Nombre del producto', max_length=25)
     opinion = models.CharField('Opinion dada por el cliente', max_length=500, blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
-
     cliente = models.ForeignKey(Cliente,related_name="post_cliente", on_delete=models.CASCADE)
 
 
