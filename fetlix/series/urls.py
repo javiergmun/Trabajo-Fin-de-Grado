@@ -20,7 +20,8 @@ urlpatterns = [
     path('servicios',views.Servicios.as_view(), name="servicios"),
 
     ##### ENDPOINTS PRODUCTO 2.0 #####
-    path('producto/', views.ProductList.as_view(), name="productos_lista"),
+    path('producto/', views.ProductList, name="productos_lista"),
+    path('producto/<int:pk>', views.ProductDetalle, name="productos_detalles"),
 
     ##### ENDPOINTS POST 2.0 #####
     path('post/', views.PostList.as_view(), name="post_lista"),
