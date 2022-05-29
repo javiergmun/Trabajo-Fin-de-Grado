@@ -24,7 +24,8 @@ urlpatterns = [
     path('producto/<int:pk>', views.ProductDetalle, name="productos_detalles"),
 
     ##### ENDPOINTS POST 2.0 #####
-    path('post/', views.PostList.as_view(), name="post_lista"),
+    path('post/', views.PostList, name="post_lista"),
+    path('post/<int:pk>', views.PostDetalle, name="post_detalles"),
 
     ##### ENDPOINTS CLIENTE 2.0 #####
     path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),
