@@ -25,7 +25,7 @@ urlpatterns = [
 
     ##### ENDPOINTS POST 2.0 #####
     path('post/', views.PostList, name="post_lista"),
-    path('post/<str:titulo>', views.PostDetalle, name="post_detalles"),
+    path('post/<str:producto>', views.PostDetalle, name="post_detalles"),
 
     ##### ENDPOINTS CLIENTE 2.0 #####
     path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),

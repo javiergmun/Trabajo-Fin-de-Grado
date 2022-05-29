@@ -13,9 +13,10 @@ class ProductSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     producto = serializers.StringRelatedField()
     cliente = serializers.StringRelatedField()
+
     class Meta:
         model = Post_Cliente
-        fields= ('id','titulo','opinion','fecha_creacion','cliente','producto')
+        fields= ('id','opinion','fecha_creacion','cliente','producto')
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
