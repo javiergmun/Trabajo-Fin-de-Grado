@@ -190,11 +190,21 @@ function crearComentario(){
         document.createTextNode("Titulo de tu comentario: ")
     );
 
-    let inputTituloComent = document.createElement('input')
-    let tipoText = document.createAttribute('type')
-    tipoText.value='text'
-    inputTituloComent.setAttributeNode(tipoText)
+    let productoComent = document.createElement('select')
     
+    fetch(`${API_URL}/productos/vehiculos/`)
+        .then((response)=>response.json())
+        .then((response)=>{
+        response.forEach((pr)=>{
+
+        let productoOption = document.createElement('option')
+
+        productoOption.append(`${pr.nombre}`);
+
+        productoComent.appendChild(productoOption)
+        
+        });
+    })
 
     let textValoracion = document.createElement('p')
     textValoracion.appendChild(
@@ -202,15 +212,21 @@ function crearComentario(){
     );
 
     let textareavaloracionComent = document.createElement('textarea')
+    let idTextArea= document.createAttribute('id')
+    idTextArea.value = 'valoracion'
+    textareavaloracionComent.setAttributeNode(idTextArea)
 
     let botonComentar = document.createElement('input')
     let tipoBot = document.createAttribute('type')
     let nombreBoton = document.createAttribute('value')
+    //let postComentar= document.createAttribute('onclick')
+    //postComentar.value= 'postComment()'
     tipoBot.value='submit'
     nombreBoton.value='Confirmar'
     botonComentar.setAttributeNode(tipoBot)
     botonComentar.setAttributeNode(nombreBoton)
-    
+    //botonComentar.setAttribute(postComentar)
+
 
     let salto1= document.createElement('p')
     let salto= document.createElement('p')
@@ -218,7 +234,7 @@ function crearComentario(){
 
 
     formulario.appendChild(textTitulo)
-    formulario.appendChild(inputTituloComent)
+    formulario.appendChild(productoComent)
     formulario.appendChild(salto1)
     
     formulario.appendChild(textValoracion)
