@@ -21,11 +21,11 @@ urlpatterns = [
 
     ##### ENDPOINTS PRODUCTO 2.0 #####
     path('producto/', views.ProductList, name="productos_lista"),
-    path('producto/<int:pk>', views.ProductDetalle, name="productos_detalles"),
+    path('producto/<str:nombre>', views.ProductDetalle, name="productos_detalles"),
 
     ##### ENDPOINTS POST 2.0 #####
     path('post/', views.PostList, name="post_lista"),
-    path('post/<int:pk>', views.PostDetalle, name="post_detalles"),
+    path('post/<str:titulo>', views.PostDetalle, name="post_detalles"),
 
     ##### ENDPOINTS CLIENTE 2.0 #####
     path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),

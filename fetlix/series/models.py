@@ -51,7 +51,7 @@ class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(verbose_name='Nombre producto', max_length=25)
     descripcion = models.CharField(verbose_name='Descripcion del producto (facilitado por la empresa)', max_length=300)
-    imagen = models.ImageField(verbose_name='Imagen del producto', upload_to='series/static/img/imagenes_producto', blank=True)
+    imagen = models.ImageField(verbose_name='Imagen del producto', upload_to='series/static/img/imagenes_producto',default='series/static/img/imagenes_producto/no-product-image.png', blank=True)
     precio = models.FloatField(verbose_name='Precio del producto', blank= True, null=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
     num_likes = models.IntegerField(verbose_name='Likes', default=0)
