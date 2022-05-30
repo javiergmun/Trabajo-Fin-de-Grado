@@ -11,7 +11,7 @@ fetch(`${API_URL}/productos/producto`)
             productos.setAttributeNode(idProductos)
 
             const dato = document.createElement('div')
-            const comentarios = document.createElement('div')
+            let comentarios = document.createElement('div')
 
             //---------
             let imagen = document.createElement('img')
@@ -107,13 +107,13 @@ fetch(`${API_URL}/productos/producto`)
             botonComentar.setAttributeNode(tipo)
             botonComentar.setAttributeNode(nombreBoton)
 
-            //Meter id del produto para que te saque los comentarios de esa id
-            fetch(`${API_URL}/posts/post`)
+            
+            fetch(`${API_URL}/posts/post/?id=${user.id}`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{
 
-                    const comentario = document.createElement('div')
+                    let comentario = document.createElement('div')
 
                     let usuarioPost = document.createElement('p')
                     usuarioPost.appendChild(
@@ -128,11 +128,13 @@ fetch(`${API_URL}/productos/producto`)
                     comentario.appendChild(usuarioPost)
                     comentario.appendChild(valoracion)
 
-                    comentarios.appendChild(comentario)
 
+                    comentarios.appendChild(comentario)
                     comentario.className='comentario'
                     
-            });
+                });
+            })
+            
             //---------
 
             //dato.appendChild(nombreIcono)
@@ -165,8 +167,7 @@ fetch(`${API_URL}/productos/producto`)
         })
 
             
-    });
-})
+});
 
 function doLike(){
     //$( "#iconoMeGusta" ).css('color', 'red');

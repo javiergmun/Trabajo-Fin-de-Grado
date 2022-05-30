@@ -136,12 +136,12 @@ def PostList(request, format=None):
 @api_view(['GET', 'PUT', 'DELETE'])
 def PostDetalle(request, producto_id, format=None):
     try:
-        post = Post_Cliente.objects.get(producto_id=producto_id)
+        post = Post_Cliente.objects.filter(producto_id=producto_id)
     except Post_Cliente.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = PostSerializer(post)
+        serializer = PostSerializer(post, many=True)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
