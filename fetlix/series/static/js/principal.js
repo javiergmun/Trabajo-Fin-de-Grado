@@ -3,7 +3,7 @@ const API_URL ="http://127.0.0.1:8000";
 fetch(`${API_URL}/productos/producto`)
     .then((response)=>response.json())
     .then((response)=>{
-        response.forEach((user)=>{
+        response.forEach((pro)=>{
 
             const productos = document.createElement('div')
             const idProductos = document.createAttribute('id')
@@ -16,27 +16,27 @@ fetch(`${API_URL}/productos/producto`)
             //---------
             let imagen = document.createElement('img')
             let foto = document.createAttribute('src')
-            
-            foto.value=`${user.imagen}`
+
+            foto.value=`${pro.imagen}`
             imagen.setAttributeNode(foto)
 
             //let salto= document.createElement('br')
-            
+
             //---------
             let nombre = document.createElement('p')
             let nombreIcono = document.createElement('span')
             nombreIcono.className='fas fa-box '
             nombre.appendChild(nombreIcono)
             nombre.appendChild(
-                document.createTextNode(" "+`${user.nombre}`)
+                document.createTextNode(" "+`${pro.nombre}`)
             );
-            
+
             let empresa = document.createElement('p')
             let empresaIcono = document.createElement('span')
             empresaIcono.className='fas fa-user'
             empresa.appendChild(empresaIcono)
             empresa.appendChild(
-                document.createTextNode(" "+`${user.empresa}`)
+                document.createTextNode(" "+`${pro.empresa}`)
             );
 
 
@@ -45,7 +45,7 @@ fetch(`${API_URL}/productos/producto`)
             precioIcono.className='fas fa-money-bill'
             precio.appendChild(precioIcono)
             precio.appendChild(
-                document.createTextNode(" "+`${user.precio}`+" €")
+                document.createTextNode(" "+`${pro.precio}`+" €")
             );
 
 
@@ -54,7 +54,7 @@ fetch(`${API_URL}/productos/producto`)
             idMg.value='meGusta'
             mg.setAttributeNode(idMg)
             mg.appendChild(
-                document.createTextNode(" "+`${user.num_likes}`)
+                document.createTextNode(" "+`${pro.num_likes}`)
             );
 
 
@@ -66,7 +66,7 @@ fetch(`${API_URL}/productos/producto`)
             mgIcono.setAttributeNode(funcionMg)
             mgIcono.setAttributeNode(idIconoMg)
             mgIcono.className='fas fa-heart '
-    
+
             //---------
 
             let descripcion = document.createElement('p')
@@ -76,7 +76,7 @@ fetch(`${API_URL}/productos/producto`)
             descripcionIcono.className='fas fa-scroll'
             descripcion.appendChild(descripcionIcono)
             descripcion.appendChild(
-                document.createTextNode(" "+user.descripcion)
+                document.createTextNode(" "+pro.descripcion)
             );
             descripcion.setAttributeNode(idDescripcion)
             descripcion.className='descripcion'
@@ -93,7 +93,7 @@ fetch(`${API_URL}/productos/producto`)
             );
             textComentarios.setAttributeNode(idTextComentarios)
             textComentarios.className='textComentario'
-            
+
             //---------
 
             let botonComentar = document.createElement('input')
@@ -107,34 +107,34 @@ fetch(`${API_URL}/productos/producto`)
             botonComentar.setAttributeNode(tipo)
             botonComentar.setAttributeNode(nombreBoton)
 
-            
-            fetch(`${API_URL}/posts/post/?id=${user.id}`)
+
+            fetch(`${API_URL}/posts/post/`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{
 
-                    let comentario = document.createElement('div')
+                        if(pro.nombre == comentary.producto){
+                            let comentario = document.createElement('div')
 
-                    let usuarioPost = document.createElement('p')
-                    usuarioPost.appendChild(
-                    document.createTextNode(`${comentary.cliente}`)
-                    );
+                            let usuarioPost = document.createElement('p')
+                            usuarioPost.appendChild(
+                            document.createTextNode(`${comentary.cliente}`)
+                            );
 
-                    let valoracion = document.createElement('p')
-                    valoracion.appendChild(
-                    document.createTextNode(`${comentary.opinion}`)
-                    );
+                            let valoracion = document.createElement('p')
+                            valoracion.appendChild(
+                            document.createTextNode(`${comentary.opinion}`)
+                            );
 
-                    comentario.appendChild(usuarioPost)
-                    comentario.appendChild(valoracion)
+                            comentario.appendChild(usuarioPost)
+                            comentario.appendChild(valoracion)
 
-
-                    comentarios.appendChild(comentario)
-                    comentario.className='comentario'
-                    
+                            comentarios.appendChild(comentario)
+                            comentario.className='comentario'
+                        }
                 });
             })
-            
+
             //---------
 
             //dato.appendChild(nombreIcono)
@@ -143,9 +143,9 @@ fetch(`${API_URL}/productos/producto`)
             dato.appendChild(precio)
             dato.appendChild(mgIcono)
             dato.appendChild(mg)
-            
 
-        
+
+
             productos.appendChild(imagen)
             productos.appendChild(dato)
             productos.appendChild(descripcion)
@@ -153,7 +153,7 @@ fetch(`${API_URL}/productos/producto`)
             productos.appendChild(comentarios)
             productos.appendChild(botonComentar)
 
-            
+
 
             //---------
             botonComentar.className = 'boton-comentar'
@@ -162,11 +162,11 @@ fetch(`${API_URL}/productos/producto`)
             dato.className = 'datos'
             productos.className= 'producto'
 
-            
+
             document.body.appendChild(productos);
         })
 
-            
+
 });
 
 function doLike(){
@@ -174,9 +174,9 @@ function doLike(){
     var demo = document.getElementById("meGusta");
     var demoValue = parseInt(demo.innerHTML);
     var puntos = demoValue + 1;
-    
+
     demo.innerHTML = puntos;
-   
+
 
 }
 
@@ -203,7 +203,7 @@ function crearComentario(){
         productoOption.append(`${pr.nombre}`);
 
         productoComent.appendChild(productoOption)
-        
+
         });
     })
 
@@ -237,7 +237,7 @@ function crearComentario(){
     formulario.appendChild(textTitulo)
     formulario.appendChild(productoComent)
     formulario.appendChild(salto1)
-    
+
     formulario.appendChild(textValoracion)
     formulario.appendChild(textareavaloracionComent)
     formulario.appendChild(salto)
@@ -246,7 +246,7 @@ function crearComentario(){
 
 
     caja.appendChild(formulario)
-   
+
     document.body.appendChild(caja)
 
     caja.className='caja-comentar'
