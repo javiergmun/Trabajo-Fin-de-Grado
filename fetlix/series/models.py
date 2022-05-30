@@ -79,8 +79,8 @@ class Post_Cliente(models.Model):
     opinion = models.CharField('Opinion dada por el cliente', max_length=500, blank= True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
-    cliente = models.ForeignKey(Cliente,related_name="propietario", on_delete=models.CASCADE)
-    producto = models.ForeignKey(Producto, related_name="comentario", on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente,related_name="propietario", on_delete=models.CASCADE, null=True)
+    producto = models.ForeignKey(Producto, related_name="comentario", on_delete=models.CASCADE, null=True)
 
 
     def __str__(self):
