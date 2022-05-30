@@ -134,9 +134,9 @@ def PostList(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def PostDetalle(request, producto, format=None):
+def PostDetalle(request, producto_id, format=None):
     try:
-        post = Post_Cliente.objects.get(producto=producto)
+        post = Post_Cliente.objects.get(producto_id=producto_id)
     except Post_Cliente.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -152,7 +152,7 @@ def PostDetalle(request, producto, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        post.delete(producto=producto)
+        post.delete(producto_id=producto_id)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
