@@ -117,7 +117,7 @@ class ProductList_ORDER_BY_LIKES(APIView):
 
 ########################################################
 #                                                      #
-#                 ENDPOINTS POSTS                      #
+#                   ENDPOINTS POSTS                    #
 #                                                      #
 ########################################################
 @api_view(['GET','POST'])
