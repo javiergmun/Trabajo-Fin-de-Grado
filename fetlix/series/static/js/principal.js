@@ -107,8 +107,8 @@ fetch(`${API_URL}/productos/producto`)
             botonComentar.setAttributeNode(tipo)
             botonComentar.setAttributeNode(nombreBoton)
 
-
-            fetch(`${API_URL}/productos/producto`)
+            //Meter id del produto para que te saque los comentarios de esa id
+            fetch(`${API_URL}/posts/post`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{
@@ -117,12 +117,12 @@ fetch(`${API_URL}/productos/producto`)
 
                     let usuarioPost = document.createElement('p')
                     usuarioPost.appendChild(
-                    document.createTextNode(`${comentary.website}`)
+                    document.createTextNode(`${comentary.cliente}`)
                     );
 
                     let valoracion = document.createElement('p')
                     valoracion.appendChild(
-                    document.createTextNode(`${comentary.email}`)
+                    document.createTextNode(`${comentary.opinion}`)
                     );
 
                     comentario.appendChild(usuarioPost)
@@ -187,11 +187,11 @@ function crearComentario(){
 
     let textTitulo = document.createElement('p')
     textTitulo.appendChild(
-        document.createTextNode("Titulo de tu comentario: ")
+        document.createTextNode("Producto a comentar: ")
     );
 
     let productoComent = document.createElement('select')
-    
+    //Sacar id del producto al que vas a comentar
     fetch(`${API_URL}/productos/producto`)
         .then((response)=>response.json())
         .then((response)=>{
