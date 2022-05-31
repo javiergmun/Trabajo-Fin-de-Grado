@@ -135,6 +135,15 @@
 		margin-right: auto;
 		padding: 3%;
 	}
+	.comentariosPerfil{
+        background-color: #E8F5F7;
+		width: 50%;
+		margin-top: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 2%;
+		border-radius: 20px;
+	}
 
     /*PAGINA LOGIN*/
 

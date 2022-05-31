@@ -132,8 +132,8 @@ fetch(`${API_URL}/productos/producto`)
                             comentarios.appendChild(comentario)
                             comentario.className='comentario'
                         }
-                });
-            })
+                    });
+                })
 
             //---------
 

@@ -108,31 +108,32 @@ fetch(`${API_URL}/productos/informatica/`)
             botonComentar.setAttributeNode(nombreBoton)
 
 
-            fetch(`${API_URL}/productos/informatica/`)
+            fetch(`${API_URL}/posts/post/`)
                 .then((response)=>response.json())
                 .then((response)=>{
                     response.forEach((comentary)=>{
 
-                    const comentario = document.createElement('div')
+                        if(user.nombre == comentary.producto){
+                            let comentario = document.createElement('div')
 
-                    let usuarioPost = document.createElement('p')
-                    usuarioPost.appendChild(
-                    document.createTextNode(`${comentary.website}`)
-                    );
+                            let usuarioPost = document.createElement('p')
+                            usuarioPost.appendChild(
+                            document.createTextNode(`${comentary.cliente}`)
+                            );
 
-                    let valoracion = document.createElement('p')
-                    valoracion.appendChild(
-                    document.createTextNode(`${comentary.email}`)
-                    );
+                            let valoracion = document.createElement('p')
+                            valoracion.appendChild(
+                            document.createTextNode(`${comentary.opinion}`)
+                            );
 
-                    comentario.appendChild(usuarioPost)
-                    comentario.appendChild(valoracion)
+                            comentario.appendChild(usuarioPost)
+                            comentario.appendChild(valoracion)
 
-                    comentarios.appendChild(comentario)
-
-                    comentario.className='comentario'
-                    
-            });
+                            comentarios.appendChild(comentario)
+                            comentario.className='comentario'
+                        }
+                });
+            })
             //---------
 
             //dato.appendChild(nombreIcono)
@@ -167,7 +168,7 @@ fetch(`${API_URL}/productos/informatica/`)
 
             
     });
-})
+
 
 function doLike(){
     //$( "#iconoMeGusta" ).css('color', 'red');

@@ -19,7 +19,13 @@
         Rol: <p>{{ user.groups.all_0 }}</p></br>
         Correo:<p>{{ user.email }}</p></br>
         Último inicio de sesión:<p>{{ user.last_login }}</p></br>
+        Tus comentarios:
     </div>
+{% endblock %}
+
+{% block script1 %}
+<script src="{% static 'js/perfil.js' %} "></script>
+
 {% endblock %}
 
 
