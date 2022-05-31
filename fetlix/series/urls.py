@@ -21,11 +21,13 @@ urlpatterns = [
 
     ##### ENDPOINTS PRODUCTO 2.0 #####
     path('producto/', views.ProductList, name="productos_lista"),
-    path('producto/<str:nombre>', views.ProductDetalle, name="productos_detalles"),
+    path('producto/<str:nombre>', views.Producto_por_nombre, name="productos_dado_un_nombre"),
+    path('producto/empresa/<str:empresa_id>', views.Producto_de_una_empresaID, name="productos_de_una_empresa_por_id"),
 
     ##### ENDPOINTS POST 2.0 #####
     path('post/', views.PostList, name="post_lista"),
-    path('post/<int:producto_id>', views.PostDetalle, name="post_detalles"),
+    path('post/<int:producto_id>', views.Post_de_un_productoID, name="comentarios_de_un_producto_por_id"),
+    path('post/cliente/<int:cliente_id>', views.Post_de_un_clienteID, name="comentarios_de_un_cliente_por_id"),
 
     ##### ENDPOINTS CLIENTE 2.0 #####
     path('cliente/', views.ClienteList.as_view(), name="cliente_lista"),

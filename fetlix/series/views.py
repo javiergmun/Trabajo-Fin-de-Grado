@@ -36,7 +36,7 @@ def ProductList(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def ProductDetalle(request, nombre, format=None):
+def Producto_por_nombre(request, nombre, format=None):
     try:
         producto = Producto.objects.get(nombre=nombre)
     except Producto.DoesNotExist:
@@ -55,6 +55,29 @@ def ProductDetalle(request, nombre, format=None):
 
     elif request.method == 'DELETE':
         producto.delete(nombre=nombre)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def Producto_de_una_empresaID(request, empresa_id, format=None):
+    try:
+        producto = Producto.objects.filter(empresa_id=empresa_id)
+    except Producto.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProductSerializer(producto, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ProductSerializer(producto, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        producto.delete(empresa_id=empresa_id)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -137,7 +160,7 @@ def PostList(request, format=None):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def PostDetalle(request, producto_id, format=None):
+def Post_de_un_productoID(request, producto_id, format=None):
     try:
         post = Post_Cliente.objects.filter(producto_id=producto_id)
     except Post_Cliente.DoesNotExist:
@@ -156,6 +179,28 @@ def PostDetalle(request, producto_id, format=None):
 
     elif request.method == 'DELETE':
         post.delete(producto_id=producto_id)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def Post_de_un_clienteID(request, cliente_id, format=None):
+    try:
+        post = Post_Cliente.objects.filter(cliente_id=cliente_id)
+    except Post_Cliente.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = PostSerializer_GET(post, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = PostSerializer_POST(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        post.delete(cliente_id=cliente_id)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
