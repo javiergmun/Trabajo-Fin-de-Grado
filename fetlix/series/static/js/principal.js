@@ -186,12 +186,17 @@ function crearComentario(){
 
     let formulario = document.createElement('form')
 
+    
     let textTitulo = document.createElement('p')
     textTitulo.appendChild(
         document.createTextNode("Producto a comentar: ")
     );
 
     let productoComent = document.createElement('select')
+    let idSelect = document.createAttribute('id')
+    idSelect.value='selectProducto'
+    productoComent.setAttributeNode(idSelect)
+
     //Sacar id del producto al que vas a comentar
     fetch(`${API_URL}/productos/producto`)
         .then((response)=>response.json())
@@ -220,20 +225,20 @@ function crearComentario(){
     let botonComentar = document.createElement('input')
     let tipoBot = document.createAttribute('type')
     let nombreBoton = document.createAttribute('value')
-    //let postComentar= document.createAttribute('onclick')
-    //postComentar.value= 'postComment()'
+    let postComentar= document.createAttribute('onclick')
+    postComentar.value= 'postComment()'
     tipoBot.value='submit'
     nombreBoton.value='Confirmar'
     botonComentar.setAttributeNode(tipoBot)
     botonComentar.setAttributeNode(nombreBoton)
-    //botonComentar.setAttribute(postComentar)
+    botonComentar.setAttributeNode(postComentar)
 
 
     let salto1= document.createElement('p')
     let salto= document.createElement('p')
 
 
-
+    
     formulario.appendChild(textTitulo)
     formulario.appendChild(productoComent)
     formulario.appendChild(salto1)
@@ -255,18 +260,49 @@ function crearComentario(){
 
 function postComment(){
 
-    let productoPost = document.getElementById("")
-    let valoracionPost = document.getElementById("valoracion")
 
-    fetch(`${API_URL}/productos/producto` ,{
+    var cod = document.getElementById("selectProducto").value;
+    //window.alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("selectProducto");
+    var selected = combo.options[combo.selectedIndex].text;
+    //alert(selected);
+
+    var valoracionPost = document.getElementById("valoracion")
+
+    /*fetch(`${API_URL}/posts/post/` ,{
         method: 'POST',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
         },
-		body: JSON.stringify({
-			producto: productoPost.value,
-			valoracion: valoracionPost.value
-		})
-	}).then(res => res.json)
+        body: JSON.stringify({
+            producto: 2,
+            opinion: valoracionPost.value
+        })
+    }).then(res => res.json)
     .then(res => console.log(res))
+    */
+
+    //var crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+    
+    var raw = JSON.stringify({
+      "opinion": valoracionPost.value,
+      "producto": "2"
+    });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers:  {
+        'Content-type': 'application/json',
+       
+    },
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
 }
