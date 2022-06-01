@@ -14,6 +14,8 @@ from series.serializers import ProductSerializer, ClienteSerializer, EmpresaSeri
 
 from django.views import View
 from series.models import Producto, Post_Cliente, Cliente, Empresa
+from django.db.models import Q
+
 
 ########################################################
 #                                                      #
@@ -241,7 +243,19 @@ class EmpresaList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+########################################################
+#                                                      #
+#               MOTOR DE BUSCADOR                      #
+#                                                      #
+########################################################
+def busqueda(request):
+    queryset = request.GET.get("buscar")
+    print(queryset)
+    if queryset:
+        eventos = Producto.objects.filter(
+            Q(descripcion__icontains = queryset)
+        ).distinct()
+    return render(request, 'index.html', {'eventos': eventos})
 
 ########################################################
 #                                                      #

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
       xmlns="http://www.w3.org/1999/html">
@@ -22,8 +23,8 @@
         <h1>{% block titulo %}  {% endblock %}</h1>
     </div>
     <div class="busca">
-        <form>
-            <input type="search" placeholder="Buscar..." class="buscador"/><button class="btn-buscar"><span class="fas fa-search"></span></button>
+        <form method="get">
+            <input name="buscar" id="buscador" type="text"  placeholder="Buscar..." class="buscador"/><button type="submit" class="btn-buscar"><span class="fas fa-search"></span></button>
         </form>
     </div>
     <div>
