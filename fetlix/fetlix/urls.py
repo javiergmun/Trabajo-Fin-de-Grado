@@ -16,19 +16,10 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.template.defaulttags import url
+
 from django.urls import path, include
 from django.views.generic import TemplateView
-
-import series
-from series.views import Inicio
-from series.views import Perfil
-from series.views import Comida
-from series.views import Moda
-from series.views import Hogar
-from series.views import Informatica
-from series.views import Servicios
-from series.views import Vehiculos
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     ##### ADMINISTRADOR #####
@@ -50,7 +41,12 @@ urlpatterns = [
 
     ##### LOGIN / REGISTRO / AUTENTIFICACION #####
     path('accounts/', include('django.contrib.auth.urls')),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+
+    #### AUTH
+    path('login/', obtain_jwt_token)
+
+
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -5,6 +5,7 @@ from django_filters import filters
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -22,6 +23,7 @@ from series.models import Producto, Post_Cliente, Cliente, Empresa
 ########################################################
 @api_view(['GET','POST'])
 def ProductList(request, format=None):
+    permision_classes = [IsAuthenticatedOrReadOnly]
     #Listar productos o crear productos
     if request.method == 'GET':
         producto = Producto.objects.all()
@@ -84,6 +86,7 @@ def Producto_de_una_empresaID(request, empresa_id, format=None):
 class ProductList_COMIDA(APIView):
     #Listar productos o crear productos
     def get(self, request , format=None):
+        permision_classes = [IsAuthenticatedOrReadOnly]
         productos= Producto.objects.all().filter(categoria=1)
         serializer = ProductSerializer(productos, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
