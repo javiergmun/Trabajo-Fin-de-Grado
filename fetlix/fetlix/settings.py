@@ -153,7 +153,8 @@ LOGIN_REDIRECT_URL = '/'
 ###auth
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
         #que este autenticado par que haga cosas
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (

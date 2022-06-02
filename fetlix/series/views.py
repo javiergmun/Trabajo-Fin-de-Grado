@@ -21,9 +21,10 @@ from series.models import Producto, Post_Cliente, Cliente, Empresa
 #                ENDPOINTS PRODUCTOS                   #
 #                                                      #
 ########################################################
+
 @api_view(['GET','POST'])
 def ProductList(request, format=None):
-    permision_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = (IsAuthenticatedOrReadOnly)
     #Listar productos o crear productos
     if request.method == 'GET':
         producto = Producto.objects.all()
