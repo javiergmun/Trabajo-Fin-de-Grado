@@ -5,7 +5,7 @@ from django_filters import filters
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -22,7 +22,7 @@ from series.models import Producto, Post_Cliente, Cliente, Empresa
 #                                                      #
 ########################################################
 @api_view(['GET','POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def ProductList(request, format=None):
 
     #Listar productos o crear productos
