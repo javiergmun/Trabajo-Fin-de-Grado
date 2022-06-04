@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template.context_processors import request
 from django_filters import filters
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -21,10 +21,10 @@ from series.models import Producto, Post_Cliente, Cliente, Empresa
 #                ENDPOINTS PRODUCTOS                   #
 #                                                      #
 ########################################################
-
 @api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
 def ProductList(request, format=None):
-    permission_classes = (IsAuthenticatedOrReadOnly)
+
     #Listar productos o crear productos
     if request.method == 'GET':
         producto = Producto.objects.all()
@@ -39,6 +39,7 @@ def ProductList(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def Producto_por_nombre(request, nombre, format=None):
     try:
         producto = Producto.objects.get(nombre=nombre)
@@ -62,6 +63,7 @@ def Producto_por_nombre(request, nombre, format=None):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def Producto_de_una_empresaID(request, empresa_id, format=None):
     try:
         producto = Producto.objects.filter(empresa_id=empresa_id)
@@ -85,14 +87,15 @@ def Producto_de_una_empresaID(request, empresa_id, format=None):
 
 
 class ProductList_COMIDA(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
-        permision_classes = [IsAuthenticatedOrReadOnly]
         productos= Producto.objects.all().filter(categoria=1)
         serializer = ProductSerializer(productos, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_HOGAR(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=2)
@@ -100,6 +103,7 @@ class ProductList_HOGAR(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_INFORMATICA(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=3)
@@ -107,6 +111,7 @@ class ProductList_INFORMATICA(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_MODA(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=4)
@@ -114,6 +119,7 @@ class ProductList_MODA(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_SERVICIOS(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=5)
@@ -121,6 +127,7 @@ class ProductList_SERVICIOS(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_VEHICULOS(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=6)
@@ -128,6 +135,7 @@ class ProductList_VEHICULOS(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_OTROS(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().filter(categoria=7)
@@ -135,6 +143,7 @@ class ProductList_OTROS(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ProductList_ORDER_BY_LIKES(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar productos o crear productos
     def get(self, request , format=None):
         productos= Producto.objects.all().order_by('-num_likes')
@@ -148,6 +157,7 @@ class ProductList_ORDER_BY_LIKES(APIView):
 #                                                      #
 ########################################################
 @api_view(['GET','POST'])
+@permission_classes([IsAuthenticated])
 def PostList(request, format=None):
         #Listar comentarios o crear comentarios
     if request.method == 'GET':
@@ -164,6 +174,7 @@ def PostList(request, format=None):
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def Post_de_un_productoID(request, producto_id, format=None):
     try:
         post = Post_Cliente.objects.filter(producto_id=producto_id)
@@ -186,6 +197,7 @@ def Post_de_un_productoID(request, producto_id, format=None):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def Post_de_un_clienteID(request, cliente_id, format=None):
     try:
         post = Post_Cliente.objects.filter(cliente_id=cliente_id)
@@ -214,6 +226,7 @@ def Post_de_un_clienteID(request, cliente_id, format=None):
 #                                                      #
 ########################################################
 class ClienteList(APIView):
+    permission_classes = [IsAuthenticated]
     #Listar cliente o crear cliente
     def get(self, request , format=None):
         posts = Cliente.objects.all()
@@ -234,6 +247,7 @@ class ClienteList(APIView):
 ########################################################
 class EmpresaList(APIView):
     #Listar empresa o crear empresa
+    permission_classes = [IsAuthenticated]
     def get(self, request , format=None):
         posts = Empresa.objects.all()
         serializer = EmpresaSerializer(posts, many=True)
@@ -245,7 +259,6 @@ class EmpresaList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 ########################################################
 #                                                      #
