@@ -303,3 +303,5 @@ class Servicios(View):
 class Vehiculos(View):
     def get(self, request):
         return render(request, 'categoria-vehiculos.html')
+
+

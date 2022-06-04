@@ -69,6 +69,15 @@
     <!-- AQUI INSERTAR RUTA AL JS PARA CADA HOJA -->
     {% endblock %}
 
+{% if user.is_authenticated %}
+
+{% else %}
+    <div class="caja-login">
+        <h3>Necesitas iniciar sesión para poder ver las opiniones de otros clientes y realizar busquedas más avanzadas</h3>
+    </div>
+{% endif %}
+
+
 
 </body>
 </html>
