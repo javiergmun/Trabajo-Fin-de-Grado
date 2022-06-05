@@ -43,7 +43,13 @@
                 <a href="{% url 'login' %}">Iniciar sesion</a>
                 {% endif %}
             </a>
-            <a href="{% url 'registro' %}">Registrarse</a>
+            <a>
+                {% if user.is_authenticated %}
+
+                {% else %}
+                <a href="{% url 'signup' %}">Registrarse</a>
+                {% endif %}
+            </a>
         </nav>
     </div>
 </div>

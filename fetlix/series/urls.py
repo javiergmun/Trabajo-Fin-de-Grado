@@ -11,8 +11,6 @@ urlpatterns = [
     ##### ENDPOINTS PERFIL 2.0 ##### TODO CAMBIARLO A LAS URL BASE YA QUE NO DEPENDE DE NADIE
     path('perfil', views.Perfil.as_view(), name="perfil"),
 
-    ##TODO URL PUNTUAL PARA EL REGISTRO
-    path('registro', views.Registro.as_view(), name="registro"),
 
     ##### CATEGORIAS MENU 2.0 #####
     path('comida',views.Comida.as_view(), name="comida"),

@@ -257,6 +257,20 @@
 	    font-family: 'Montserrat Alternates', sans-serif;
     }
 
+
+    /*Pagina Registro*/
+    .caja-registro{
+        border-radius: 170px;
+        background-image: linear-gradient(rgba(255,255,255, 1),rgba(255,255,255, 0.5));
+		width: 80%;
+		margin-top: 8rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 3%;
+		padding-left: 0;
+		padding-right: 0;
+
+    }
     /*BUSCADOR*/
     ::placeholder{
         color: white;
