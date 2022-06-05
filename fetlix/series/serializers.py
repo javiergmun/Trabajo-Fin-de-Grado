@@ -31,6 +31,11 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = Cliente
         fields=('__all__')
 
+class ClienteSerializer_POST(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields=('id','nombre')
+
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresa

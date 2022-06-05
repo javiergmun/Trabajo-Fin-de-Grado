@@ -11,7 +11,7 @@ from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 
 from series.serializers import ProductSerializer, ClienteSerializer, EmpresaSerializer, \
-    PostSerializer_GET, PostSerializer_POST
+    PostSerializer_GET, PostSerializer_POST, ClienteSerializer_POST
 
 from django.views import View
 from series.models import Producto, Post_Cliente, Cliente, Empresa
@@ -262,6 +262,19 @@ class ClienteList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def PostCliente(request, format=None):
+
+    if request.method == 'POST':
+        cliente_data = JSONParser().parse(request)
+        serializer = ClienteSerializer_POST(data=cliente_data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 ########################################################
