@@ -193,6 +193,9 @@ function crearComentario(){
     );
 
     let productoComent = document.createElement('select')
+    let idSelect = document.createAttribute('id')
+    idSelect.value='selectProducto'
+    productoComent.setAttributeNode(idSelect)
     
     fetch(`${API_URL}/productos/hogar/`)
         .then((response)=>response.json())
@@ -221,13 +224,24 @@ function crearComentario(){
     let botonComentar = document.createElement('input')
     let tipoBot = document.createAttribute('type')
     let nombreBoton = document.createAttribute('value')
-    //let postComentar= document.createAttribute('onclick')
-    //postComentar.value= 'postComment()'
+    let postComentar= document.createAttribute('onclick')
+    postComentar.value= 'postComment()'
     tipoBot.value='submit'
     nombreBoton.value='Confirmar'
     botonComentar.setAttributeNode(tipoBot)
     botonComentar.setAttributeNode(nombreBoton)
-    //botonComentar.setAttribute(postComentar)
+    botonComentar.setAttribute(postComentar)
+
+    //
+    let botonSalir = document.createElement('input')
+    let tipoBot1 = document.createAttribute('type')
+    let nombreSalir = document.createAttribute('value')
+    tipoBot1.value='submit'
+    nombreSalir.value='Cancelar'
+    botonSalir.setAttributeNode(tipoBot1)
+    botonSalir.setAttributeNode(nombreSalir)
+    
+    //
 
 
     let salto1= document.createElement('p')
@@ -244,11 +258,50 @@ function crearComentario(){
     formulario.appendChild(salto)
 
     formulario.appendChild(botonComentar)
-
+    formulario.appendChild(botonSalir)
 
     caja.appendChild(formulario)
-   
+
     document.body.appendChild(caja)
 
+    botonComentar.className='boton-confirmar'
+    botonSalir.className='boton-cancelar'
     caja.className='caja-comentar'
+}
+function postComment(){
+
+    /* Para obtener el texto */
+    var combo = document.getElementById("selectProducto");
+    var selected = combo.options[combo.selectedIndex].text;
+
+    var valoracionPost = document.getElementById("valoracion")
+
+    fetch(`${API_URL}/productos/producto/${selected}`)
+        .then((response)=>response.json())
+        .then((response)=>{
+       
+            var raw = JSON.stringify({
+                "opinion": valoracionPost.value,
+                "producto": response.id
+            });
+              
+            var requestOptions = {
+                method: 'POST',
+                headers:  {
+                  'Content-type': 'application/json',
+                  'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjU0NjAxMzQ2LCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.GVWvVF4xEgOR5olU_ANYYa_zMSWj0J_N34SuxZynZgM'
+               
+                },
+                body: raw,
+                redirect: 'follow'
+            };
+              
+            fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        
+    })
+
+   
 }

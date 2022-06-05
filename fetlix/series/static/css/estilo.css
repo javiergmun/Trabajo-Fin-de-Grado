@@ -164,7 +164,7 @@
 	    background-color: white;
 	    text-align: center;
 	    padding: 1px 5px;
-	    margin-top: 5px;
+	    margin-top: 20px;
 	    margin-left: 45%;
 	    font-family: 'Montserrat Alternates', sans-serif;
 	    display: inline-block;
@@ -243,6 +243,19 @@
         font-family: 'Google', sans-serif;
         margin_top: 3px;
     }
+    .inputRegistro{
+        border: 1px solid grey;
+        border-radius: 7px;
+	    background-color: white;
+	    text-align: center;
+	    font-family: 'Montserrat Alternates', sans-serif;
+	    display: inline-block;
+	    transition-duration: 0.4s;
+    }
+    .textRegistro{
+        margin-left: 200px;
+	    font-family: 'Montserrat Alternates', sans-serif;
+    }
 
     /*BUSCADOR*/
     ::placeholder{
@@ -278,7 +291,7 @@
 	    height: 40%;
 		margin-top: 6rem;
 		margin-left: 4px;
-		margin-right: 400px;
+		margin-right: 340px;
 		padding: 2%;
 		float : right;
 		display: inline-block;
@@ -352,6 +365,23 @@
         width: 90%;
         height: 400px;
         outline: none;
+    }
+    .boton-confirmar{
+        margin-top: 5px;
+	    border-radius: 5px;
+	    float: left;
+	    border: none;
+	    cursor: pointer;
+	    padding: 3px;
+    }
+    .boton-cancelar{
+        margin-top: 5px;
+        margin-left: 10px;
+	    border-radius: 5px;
+	    float: left;
+	    border: none;
+	    cursor: pointer;
+	    padding: 3px;
     }
 
 

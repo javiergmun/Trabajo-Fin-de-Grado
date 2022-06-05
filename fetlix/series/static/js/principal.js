@@ -222,6 +222,8 @@ function crearComentario(){
     idTextArea.value = 'valoracion'
     textareavaloracionComent.setAttributeNode(idTextArea)
 
+    //
+
     let botonComentar = document.createElement('input')
     let tipoBot = document.createAttribute('type')
     let nombreBoton = document.createAttribute('value')
@@ -233,12 +235,19 @@ function crearComentario(){
     botonComentar.setAttributeNode(nombreBoton)
     botonComentar.setAttributeNode(postComentar)
 
-
+    //
+    let botonSalir = document.createElement('input')
+    let tipoBot1 = document.createAttribute('type')
+    let nombreSalir = document.createAttribute('value')
+    tipoBot1.value='submit'
+    nombreSalir.value='Cancelar'
+    botonSalir.setAttributeNode(tipoBot1)
+    botonSalir.setAttributeNode(nombreSalir)
+    
+    //
     let salto1= document.createElement('p')
     let salto= document.createElement('p')
 
-
-    
     formulario.appendChild(textTitulo)
     formulario.appendChild(productoComent)
     formulario.appendChild(salto1)
@@ -248,61 +257,52 @@ function crearComentario(){
     formulario.appendChild(salto)
 
     formulario.appendChild(botonComentar)
-
+    formulario.appendChild(botonSalir)
 
     caja.appendChild(formulario)
 
     document.body.appendChild(caja)
 
+    botonComentar.className='boton-confirmar'
+    botonSalir.className='boton-cancelar'
     caja.className='caja-comentar'
 }
 
 
 function postComment(){
 
-
-    var cod = document.getElementById("selectProducto").value;
-    //window.alert(cod);
-    
     /* Para obtener el texto */
     var combo = document.getElementById("selectProducto");
     var selected = combo.options[combo.selectedIndex].text;
-    //alert(selected);
 
     var valoracionPost = document.getElementById("valoracion")
 
-    /*fetch(`${API_URL}/posts/post/` ,{
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-            producto: 2,
-            opinion: valoracionPost.value
-        })
-    }).then(res => res.json)
-    .then(res => console.log(res))
-    */
-
-    //var crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
-    
-    var raw = JSON.stringify({
-      "opinion": valoracionPost.value,
-      "producto": "2"
-    });
-    
-    var requestOptions = {
-      method: 'POST',
-      headers:  {
-        'Content-type': 'application/json',
+    fetch(`${API_URL}/productos/producto/${selected}`)
+        .then((response)=>response.json())
+        .then((response)=>{
        
-    },
-      body: raw,
-      redirect: 'follow'
-    };
-    
-    fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+            var raw = JSON.stringify({
+                "opinion": valoracionPost.value,
+                "producto": response.id
+            });
+              
+            var requestOptions = {
+                method: 'POST',
+                headers:  {
+                  'Content-type': 'application/json',
+                  'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjU0NjAxMzQ2LCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.GVWvVF4xEgOR5olU_ANYYa_zMSWj0J_N34SuxZynZgM'
+               
+                },
+                body: raw,
+                redirect: 'follow'
+            };
+              
+            fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        
+    })
+
+   
 }
