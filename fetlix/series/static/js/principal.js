@@ -277,32 +277,36 @@ function postComment(){
 
     var valoracionPost = document.getElementById("valoracion")
 
+    //var nombreCliente = document.getElementById("user.username").value
+
     fetch(`${API_URL}/productos/producto/${selected}`)
-        .then((response)=>response.json())
-        .then((response)=>{
-       
-            var raw = JSON.stringify({
-                "opinion": valoracionPost.value,
-                "producto": response.id
-            });
-              
-            var requestOptions = {
-                method: 'POST',
-                headers:  {
-                  'Content-type': 'application/json',
-                  'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjU0NjAxMzQ2LCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.GVWvVF4xEgOR5olU_ANYYa_zMSWj0J_N34SuxZynZgM'
-               
-                },
-                body: raw,
-                redirect: 'follow'
-            };
-              
-            fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
-                .then(response => response.text())
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
-        
-    })
+            .then((response)=>response.json())
+            .then((response)=>{
+           
+            
+                var raw = JSON.stringify({
+                    "opinion": valoracionPost.value,
+                    "producto": response.id,
+                });
+                  
+                var requestOptions = {
+                    method: 'POST',
+                    headers:  {
+                      'Content-type': 'application/json',
+                      'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjU2MzU0MjI5LCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.x5SfLbhWw6Ctmz1yQ9RtlfgbgBVhmlVOePBlh8fnDCc'
+                   
+                    },
+                    body: raw,
+                    redirect: 'follow'
+                };
+                  
+                fetch("http://127.0.0.1:8000/posts/post/", requestOptions)
+                    .then(response => response.text())
+                    .then(result => console.log(result))
+                    .catch(error => console.log('error', error));
+            
+        })
 
    
 }
+
