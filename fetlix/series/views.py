@@ -11,7 +11,7 @@ from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 
 from series.serializers import ProductSerializer, ClienteSerializer, EmpresaSerializer, \
-    PostSerializer_GET, PostSerializer_POST, ClienteSerializer_POST
+    PostSerializer_GET, PostSerializer_POST, ClienteSerializer_POST, ProductSerializer_Post
 
 from django.views import View
 from series.models import Producto, Post_Cliente, Cliente, Empresa
@@ -36,7 +36,7 @@ def ProductList(request, format=None):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductSerializer_Post(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

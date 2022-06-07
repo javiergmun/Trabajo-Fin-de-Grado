@@ -10,6 +10,19 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('id','nombre','descripcion','imagen','precio','fecha_creacion','num_likes','categoria','empresa')
         #fields = ('__all__')
 
+class ProductSerializer_Post(serializers.ModelSerializer):
+
+    class Meta:
+        model = Producto
+        fields = ('id','nombre','descripcion','imagen','precio','categoria','empresa')
+        #Introducir JS
+        #NOMBRE
+        #DESCRIPCION
+        #CAMPO INTRODUCIR IMAGEN
+        #PRECIO
+        #CATEGORIA SELECCION
+        #EMPRESA (QUE EL NOMBRE SEA = EL NOMBRE DEL CLIENTE Y SALGA POR DEFAULT)
+
 
 class PostSerializer_GET(serializers.ModelSerializer):
     producto = serializers.StringRelatedField()
