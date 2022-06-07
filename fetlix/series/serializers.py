@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from series.models import Producto, Post_Cliente, Cliente, Empresa
 

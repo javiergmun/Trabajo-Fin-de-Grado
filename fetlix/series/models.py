@@ -9,7 +9,6 @@ class Cliente(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(verbose_name='Nombre cliente', max_length=40)
     email = models.EmailField(verbose_name='Email cliente', max_length=40, unique=True)
-    contrasena = models.CharField(verbose_name='Contraseña cliente', max_length=40)
     imagen = models.ImageField(verbose_name='Imagen', upload_to='series/static/img/imagenes_clientes', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
@@ -21,7 +20,6 @@ class Empresa(models.Model):
     nombre = models.CharField(verbose_name='Nombre de empresa', max_length=40, unique=True)
     descripcion = models.CharField(verbose_name='Descripcion de empresa', max_length=100)
     email = models.EmailField(verbose_name='Email empresa', max_length=40, unique=True)
-    contrasena = models.CharField(verbose_name='Contraseña empresa', max_length=40)
     imagen = models.ImageField(verbose_name='Imagen corporativa de la empresa', upload_to='series/static/img/imagenes_empresa', blank=True)
     fecha_creacion = models.DateTimeField("Fecha de creacion", default=now, blank=True)
 
