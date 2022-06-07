@@ -25,7 +25,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     ##### ADMINISTRADOR #####
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name="administrator"),
 
 
     ##### CATEGORIAS MENU 1.0 #####
