@@ -31,7 +31,7 @@ from django.shortcuts import render, redirect
 def ProductList(request, format=None):
     # Listar productos o crear productos
     if request.method == 'GET':
-        producto = Producto.objects.all()
+        producto = Producto.objects.all().order_by('-num_likes')
         serializer = ProductSerializer(producto, many=True)
         return Response(serializer.data)
 
