@@ -49,6 +49,7 @@
                 {% endif %}
             </a>
             <input type="hidden" id="userId" value={{user.username}}>
+            {{ request.user.username|json_script:"user_id" }}
         </nav>
     </div>
 </div>
@@ -80,11 +81,9 @@
 
 {% else %}
     <div class="caja-login">
-        <h2>Necesitas iniciar sesión para poder ver las opiniones de otros clientes y realizar busquedas más avanzadas</h2>
+        <h3>Necesitas iniciar sesión para poder ver las opiniones de otros clientes y realizar busquedas más avanzadas</h3>
     </div>
 {% endif %}
-
-
 
 </body>
 </html>
