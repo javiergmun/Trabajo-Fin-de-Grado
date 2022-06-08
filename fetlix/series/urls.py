@@ -37,6 +37,7 @@ urlpatterns = [
 
     ##### ENDPOINTS EMPRESA 2.0 #####
     path('empresa/', views.EmpresaList.as_view(), name="empresa_lista"),
+    path('empresa/<str:nombre>', views.Empresa_por_nombre, name="empresa_dado_un_nombre"),
 
     ##### ENDPOINTS CATEGORIA COMIDA 2.0 #####
     path('comida/', views.ProductList_COMIDA.as_view(), name="cat_comida_lista"),
