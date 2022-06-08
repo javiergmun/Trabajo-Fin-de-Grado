@@ -294,7 +294,6 @@ function postComment(){
                     headers:  {
                       'Content-type': 'application/json',
                       'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjU2MzU0MjI5LCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.x5SfLbhWw6Ctmz1yQ9RtlfgbgBVhmlVOePBlh8fnDCc'
-                   
                     },
                     body: raw,
                     redirect: 'follow'
