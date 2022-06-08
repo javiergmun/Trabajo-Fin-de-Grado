@@ -2,6 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from series.models import Cliente, Post_Cliente, Empresa, Producto
+from admin_interface.compat import gettext_lazy as _
+from admin_interface.models import Theme
 
 
 admin.site.register(Cliente)
