@@ -7,6 +7,9 @@ fetch(`${API_URL}/clientes/cliente/${user_id}`)
         .then((response)=>response.json())
         .then((r)=>{
         
+            let imagenPerfil = document.getElementById("fotoPerfil")
+            imagenPerfil.src=r.imagen
+            
             fetch(`${API_URL}/posts/post/cliente/${r.id}`)
             .then((response)=>response.json())
             .then((response)=>{

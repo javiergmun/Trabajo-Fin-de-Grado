@@ -301,11 +301,11 @@
 	.producto{
 	    border-radius: 5px;
 	    background-color: #A0EAE9;
-	    width: 50%;
+	    width: 60%;
 	    height: 40%;
 		margin-top: 6rem;
 		margin-left: 4px;
-		margin-right: 340px;
+		margin-right: 250px;
 		padding: 2%;
 		float : right;
 		display: inline-block;
@@ -319,6 +319,7 @@
 		float: right;
 		margin-right: 50px;
 		margin-left: 20px;
+		margin-bottom: 5px;
 		text-color: black
 	}
 	#iconoMeGusta{
@@ -366,18 +367,18 @@
     /*Caja comentario*/
     .caja-comentar{
         border-radius: 5px;
-        background-color: #E97E6B;
+        background-color: #FFA28E;
         width: 70%;
 	    height: 70%;
 	    margin-top: 80px;
 		margin-right: auto;
-		margin-left: 300px;
+		margin-left: 250px;
 		padding: 3%;
         position:fixed;
     }
     textarea{
         width: 90%;
-        height: 400px;
+        height: 150px;
         outline: none;
     }
     .boton-confirmar{

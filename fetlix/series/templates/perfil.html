@@ -13,7 +13,7 @@
                 background-size: 100vw 100vh;
                 background-attachment: fixed;">
     <div class="centrado">
-        <img id="fotoPerfil" src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" width="200" height="120" ></br></br>
+        <img id="fotoPerfil" src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg" width="200" height="150" ></br></br>
         Usuario:<p>{{ user.username }}</p></br>
         Rol: <p>{% for group in user.groups.all %} {{ group.name }} {% endfor %}</p></br>
         Correo:<p>{{ user.email }}</p></br>

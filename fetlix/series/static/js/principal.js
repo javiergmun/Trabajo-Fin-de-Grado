@@ -116,17 +116,12 @@ fetch(`${API_URL}/productos/producto`)
                         if(pro.nombre == comentary.producto){
                             let comentario = document.createElement('div')
 
-                            let usuarioPost = document.createElement('p')
-                            usuarioPost.appendChild(
-                            document.createTextNode(`${comentary.cliente}`)
-                            );
-
                             let valoracion = document.createElement('p')
                             valoracion.appendChild(
                             document.createTextNode(`${comentary.opinion}`)
                             );
 
-                            comentario.appendChild(usuarioPost)
+                            
                             comentario.appendChild(valoracion)
 
                             comentarios.appendChild(comentario)

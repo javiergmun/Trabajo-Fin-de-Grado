@@ -116,17 +116,11 @@ fetch(`${API_URL}/productos/vehiculos/`)
                         if(user.nombre == comentary.producto){
                             let comentario = document.createElement('div')
 
-                            let usuarioPost = document.createElement('p')
-                            usuarioPost.appendChild(
-                            document.createTextNode(`${comentary.cliente}`)
-                            );
-
                             let valoracion = document.createElement('p')
                             valoracion.appendChild(
                             document.createTextNode(`${comentary.opinion}`)
                             );
 
-                            comentario.appendChild(usuarioPost)
                             comentario.appendChild(valoracion)
 
                             comentarios.appendChild(comentario)
@@ -229,7 +223,7 @@ function crearComentario(){
     nombreBoton.value='Confirmar'
     botonComentar.setAttributeNode(tipoBot)
     botonComentar.setAttributeNode(nombreBoton)
-    botonComentar.setAttributeNoe(postComentar)
+    botonComentar.setAttributeNode(postComentar)
 
     //
     let botonSalir = document.createElement('input')
